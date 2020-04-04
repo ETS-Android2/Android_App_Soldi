@@ -21,6 +21,9 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private ActionBarDrawerToggle drawerToggle;
+    private Toolbar toolbar;
+    private boolean toolBarNavigationListenerIsRegistered = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setupNavigation();
 
         //Navigation drawer and toolbar
-        setupNavigationDrawerAndToolbar(savedInstanceState);
+        manageNavigationDrawerAndToolbar(savedInstanceState);
 
     }
 
@@ -42,13 +45,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
-
+        //TODO Fix this dirty trick to have it working (allows navigation drawer after coming back from expense type)
+        if(getToolbar().getTitle().length()==("HomeFragment".length())){
+            showBackButton(false);
+        }
     }
 
     //Setting up navigation
     private void setupNavigation() {
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -67,22 +73,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
-    //TRATAR DE ENCONTRAR EL LISTENER DEL HAMBURGUER PARA CUANDO ESTE EN FRAGMENT DE NAVIGATION DAR HACIA ATRÁS, NO DESPLEGAR DRAWER
-    /*
-            if (getSupportActionBar().getTitle().toString().equals(getResources().getString(R.string.expense_type_title))) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        navController.popBackStack();
-    } else if (getSupportActionBar().getTitle().toString().equals(getResources().getString(R.string.payment_method_title))) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        navController.popBackStack();
-    } else if (getSupportActionBar().getTitle().toString().equals(getResources().getString(R.string.confirm_expense_title))) {
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-        navController.popBackStack();
-    } else {
-    */
+    public void showBackButton(boolean show) {
+        if(show) {
+            //You may not want to open the drawer on swipe from the left in this case
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            // Remove hamburger
+            drawerToggle.setDrawerIndicatorEnabled(false);
+            // Show back button
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-    private void setupNavigationDrawerAndToolbar(Bundle savedInstanceState) {
-        Toolbar toolbar = findViewById(R.id.toolbar);
+            if(!toolBarNavigationListenerIsRegistered) {
+                drawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Doesn't have to be onBackPressed
+                        onBackPressed();
+                    }
+                });
+
+                toolBarNavigationListenerIsRegistered = true;
+            }
+
+        } else {
+            //Regain the power of swipe for the drawer.
+            drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            // Remove back button
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            // Show hamburger
+            drawerToggle.setDrawerIndicatorEnabled(true);
+            // Remove the/any drawer toggle listener
+            drawerToggle.setToolbarNavigationClickListener(null);
+            toolBarNavigationListenerIsRegistered = false;
+        }
+    }
+
+    public NavigationView setupNavigationDrawerAndToolbar(){
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(getString(R.string.app_name));
 
@@ -90,10 +116,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //Class that handles the toggle on the navigation drawer and the "hamburger" icon turn.
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar,
                 R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+        drawer.addDrawerListener(drawerToggle);
+
+        drawerToggle.syncState();
+        return navigationView;
+    }
+
+    private void manageNavigationDrawerAndToolbar(Bundle savedInstanceState) {
+
+        NavigationView navigationView = setupNavigationDrawerAndToolbar();
 
         if (savedInstanceState == null) { //If activity is really created for the first time.
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, //Show home when creating activity
@@ -133,5 +166,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public DrawerLayout getDrawer() {
+        return drawer;
+    }
+
+    public ActionBarDrawerToggle getDrawerToggle() {
+        return drawerToggle;
+    }
+
+    public Toolbar getToolbar() {
+        return toolbar;
     }
 }

@@ -10,9 +10,20 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="quantity_expense_title">How much?</string>
     <string name="expense_type_title">What?</string>
     <string name="payment_method_title">How?</string>
     <string name="confirm_expense_title">Is it okay?</string>
+
+    <string name="supermarket_type">Supermarket</string>
+    <string name="transport_type">Transport</string>
+    <string name="leisure_type">Leisure</string>
+    <string name="shopping_type">Shopping</string>
+    <string name="bills_type">Bills</string>
+    <string name="other_type">Other</string>
+
+    <string name="cash_payment">Cash</string>
+    <string name="card_payment">Card</string>
 
 
 </resources>

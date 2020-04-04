@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
+import com.example.soldiapp.MainActivity;
 import com.example.soldiapp.R;
 
 import java.util.ArrayList;
@@ -36,16 +38,18 @@ public class I_ExpenseTypeFragment extends Fragment {
 
         final NavController navController = Navigation.findNavController(view);
 
-        ArrayList<Button> typeButtons = new ArrayList<Button>();
+        ((MainActivity)getActivity()).getToolbar().setTitle(getString(R.string.expense_type_title));
 
-        typeButtons.add((Button) view.findViewById(R.id.supermarketTypeButton));
-        typeButtons.add((Button) view.findViewById(R.id.transportTypeButton));
-        typeButtons.add((Button) view.findViewById(R.id.leisureTypeButton));
-        typeButtons.add((Button) view.findViewById(R.id.shoppingTypeButton));
-        typeButtons.add((Button) view.findViewById(R.id.billsTypeButton));
-        typeButtons.add((Button) view.findViewById(R.id.otherTypeButton));
+        ArrayList<ImageView> typeButtons = new ArrayList<ImageView>();
 
-        for (Button button : typeButtons) {
+        typeButtons.add((ImageView) view.findViewById(R.id.supermarketTypeButton));
+        typeButtons.add((ImageView) view.findViewById(R.id.transportTypeButton));
+        typeButtons.add((ImageView) view.findViewById(R.id.leisureTypeButton));
+        typeButtons.add((ImageView) view.findViewById(R.id.shoppingTypeButton));
+        typeButtons.add((ImageView) view.findViewById(R.id.billsTypeButton));
+        typeButtons.add((ImageView) view.findViewById(R.id.otherTypeButton));
+
+        for (ImageView button : typeButtons) {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

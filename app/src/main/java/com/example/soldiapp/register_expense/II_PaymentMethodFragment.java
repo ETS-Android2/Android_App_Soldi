@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import com.example.soldiapp.MainActivity;
 import com.example.soldiapp.R;
 
 import java.util.ArrayList;
@@ -35,12 +37,14 @@ public class II_PaymentMethodFragment extends Fragment {
 
         final NavController navController = Navigation.findNavController(view);
 
-        ArrayList<Button> paymentButtons = new ArrayList<Button>();
+        ((MainActivity)getActivity()).getToolbar().setTitle(getString(R.string.payment_method_title));
 
-        paymentButtons.add((Button) view.findViewById(R.id.cashPaymentButton));
-        paymentButtons.add((Button) view.findViewById(R.id.cardPaymentButton));
+        ArrayList<ImageView> paymentButtons = new ArrayList<ImageView>();
 
-        for (Button button : paymentButtons) {
+        paymentButtons.add((ImageView) view.findViewById(R.id.cashPaymentButton));
+        paymentButtons.add((ImageView) view.findViewById(R.id.cardPaymentButton));
+
+        for (ImageView button : paymentButtons) {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
