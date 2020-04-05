@@ -1,10 +1,11 @@
-package com.example.soldiapp.register_expense;
+package com.example.soldiapp.fragments.register_expense;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
@@ -16,19 +17,22 @@ import android.widget.ImageView;
 
 import com.example.soldiapp.MainActivity;
 import com.example.soldiapp.R;
+import com.example.soldiapp.data_handling.SharedViewModel;
 
 import java.util.ArrayList;
 
 public class I_ExpenseTypeFragment extends Fragment {
 
+    SharedViewModel viewModel;
+
     public I_ExpenseTypeFragment() {
-        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        viewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
         return inflater.inflate(R.layout.fragment_i_expense_type, container, false);
     }
 
@@ -38,8 +42,10 @@ public class I_ExpenseTypeFragment extends Fragment {
 
         final NavController navController = Navigation.findNavController(view);
 
+        //Change toolbar title
         ((MainActivity)getActivity()).getToolbar().setTitle(getString(R.string.expense_type_title));
 
+        //Add buttons listeners
         ArrayList<ImageView> typeButtons = new ArrayList<ImageView>();
 
         typeButtons.add((ImageView) view.findViewById(R.id.supermarketTypeButton));
@@ -53,10 +59,36 @@ public class I_ExpenseTypeFragment extends Fragment {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    saveExpenseType(v);
                     navController.navigate(R.id.action_i_ExpenseTypeFragment_to_ii_PaymentMethodFragment);
                 }
             });
         }
 
+    }
+
+    private void saveExpenseType(View v){
+        switch (v.getId()){
+            case R.id.supermarketTypeButton:
+                viewModel.setExpenseType("supermarket");
+                break;
+            case R.id.transportTypeButton:
+                viewModel.setExpenseType("transport");
+                break;
+            case R.id.leisureTypeButton:
+                viewModel.setExpenseType("leisure");
+                break;
+            case R.id.shoppingTypeButton:
+                viewModel.setExpenseType("shopping");
+                break;
+            case R.id.billsTypeButton:
+                viewModel.setExpenseType("bills");
+                break;
+            case R.id.otherTypeButton:
+                viewModel.setExpenseType("other");
+                break;
+            default:
+                ;
+        }
     }
 }

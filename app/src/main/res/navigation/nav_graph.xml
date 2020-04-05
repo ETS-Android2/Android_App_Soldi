@@ -7,7 +7,7 @@
     <fragment
         tools:layout="@layout/fragment_home"
         android:id="@+id/homeFragment"
-        android:name="com.example.soldiapp.HomeFragment"
+        android:name="com.example.soldiapp.fragments.HomeFragment"
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_i_ExpenseTypeFragment"
@@ -16,7 +16,7 @@
     <fragment
         tools:layout="@layout/fragment_i_expense_type"
         android:id="@+id/i_ExpenseTypeFragment"
-        android:name="com.example.soldiapp.register_expense.I_ExpenseTypeFragment"
+        android:name="com.example.soldiapp.fragments.register_expense.I_ExpenseTypeFragment"
         android:label="i_ExpenseTypeFragment">
         <action
             android:id="@+id/action_i_ExpenseTypeFragment_to_ii_PaymentMethodFragment"
@@ -25,7 +25,7 @@
     <fragment
         tools:layout="@layout/fragment_ii_payment_method"
         android:id="@+id/ii_PaymentMethodFragment"
-        android:name="com.example.soldiapp.register_expense.II_PaymentMethodFragment"
+        android:name="com.example.soldiapp.fragments.register_expense.II_PaymentMethodFragment"
         android:label="ii_PaymentMethodFragment">
         <action
             android:id="@+id/action_ii_PaymentMethodFragment_to_iii_ConfirmExpenseFragment"
@@ -34,7 +34,7 @@
     <fragment
         tools:layout="@layout/fragment_iii_confirm_expense"
         android:id="@+id/iii_ConfirmExpenseFragment"
-        android:name="com.example.soldiapp.register_expense.III_ConfirmExpenseFragment"
+        android:name="com.example.soldiapp.fragments.register_expense.III_ConfirmExpenseFragment"
         android:label="iii_ConfirmExpenseFragment">
         <action
             android:id="@+id/action_iii_ConfirmExpenseFragment_to_homeFragment"
