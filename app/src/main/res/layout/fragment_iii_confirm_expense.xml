@@ -48,32 +48,7 @@
 
     <ImageView
         android:id="@+id/firstArrowConfirm"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/right_arrow"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageConfirmExpenseType"
-        app:layout_constraintHorizontal_bias="0.523"
-        app:layout_constraintStart_toEndOf="@+id/textConfirmMoney"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageConfirmExpenseType"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.531"
-        app:srcCompat="@drawable/supermarket" />
-
-    <ImageView
-        android:id="@+id/secondArrowConfirm"
-        android:layout_width="32dp"
+        android:layout_width="20dp"
         android:layout_height="32dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
@@ -81,13 +56,39 @@
         android:src="@drawable/right_arrow"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/imageConfirmPaymentMethod"
+        app:layout_constraintStart_toEndOf="@+id/textConfirmMoney"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageConfirmExpenseType"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/supermarket" />
+
+    <ImageView
+        android:id="@+id/secondArrowConfirm"
+        android:layout_width="20dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="30dp"
+        android:src="@drawable/left_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textConfirmMoney"
         app:layout_constraintStart_toEndOf="@+id/imageConfirmExpenseType"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageConfirmPaymentMethod"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginStart="300dp"
         android:layout_marginTop="40dp"
         android:src="@drawable/cash"
@@ -100,17 +101,16 @@
         android:id="@+id/textConfirmMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="300dp"
         android:fontFamily="@font/josefin_sans_bold"
-        android:text="13$"
+        android:text="133.45€"
         android:textColor="#36393C"
-        android:textSize="40sp"
+        android:textSize="33sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.537" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

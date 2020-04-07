@@ -6,6 +6,8 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.example.soldiapp.auxiliar.Expense;
+import com.example.soldiapp.auxiliar.Expense_Payment;
+import com.example.soldiapp.auxiliar.Expense_Type;
 
 import java.util.List;
 
@@ -15,5 +17,14 @@ public interface ExpenseDao {
     void insert(Expense expense);
 
     @Query("SELECT * FROM expense_table ORDER BY id DESC")
-    LiveData<List<Expense>> getAllExpenses(); //As soon as there are changes on List of expenses, the LiveData object will be updated
+    List<Expense> getAllExpenses();
+
+    @Query("SELECT SUM(expense) as expense,expenseType FROM expense_table GROUP BY expenseType")
+    List<Expense_Type> getSumTypeExpenses();
+
+    @Query("SELECT SUM(expense) as expense,paymentWithCash FROM expense_table GROUP BY paymentWithCash")
+    List<Expense_Payment> getSumPaymentExpenses();
+
+
+
 }

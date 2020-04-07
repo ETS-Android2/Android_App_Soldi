@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp">
+
+        <TextView
+            android:id="@+id/title_analysis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Analysis fragment"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/expense_amount_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_analysis"
+            android:layout_centerHorizontal="true"
+            android:text="Expense Type"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/expense_type_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/expense_amount_text"
+            android:text="Expense Amount"
+            android:textSize="30dp" />
+    </RelativeLayout>
+
+
+
+    <!--<com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/expensesTypeChart"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="70dp" />-->
+
+</androidx.cardview.widget.CardView>

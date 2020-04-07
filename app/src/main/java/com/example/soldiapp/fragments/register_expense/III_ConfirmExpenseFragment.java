@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +34,7 @@ public class III_ConfirmExpenseFragment extends Fragment {
     ExpenseViewModel expenseViewModel;
 
     public III_ConfirmExpenseFragment() {
-        // Required empty public constructor
+        //        // Required empty public constructor
     }
 
     @Override
@@ -68,10 +69,15 @@ public class III_ConfirmExpenseFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if (v.getId() == R.id.confirmExpenseButton) {
+
                         saveExpense();
+
                         navController.navigate(R.id.action_iii_ConfirmExpenseFragment_to_homeFragment);
                         ((MainActivity) getActivity()).showBackButton(false);
                     } else {
+
+                        Toast.makeText(getActivity(), "Expense canceled", Toast.LENGTH_SHORT).show();
+
                         navController.navigate(R.id.action_iii_ConfirmExpenseFragment_to_homeFragment);
                         ((MainActivity) getActivity()).showBackButton(false);
                     }
@@ -82,9 +88,11 @@ public class III_ConfirmExpenseFragment extends Fragment {
 
     }
 
+    //TODO Improve mechanism of this method (dynamic resource allocating instead of check each possible solution)
     private void showExpenseSummary(View view) {
         TextView expenseAmount = (TextView) view.findViewById(R.id.textConfirmMoney);
-        expenseAmount.setText(viewModel.getExpense().getValue().toString());
+        Double money = viewModel.getExpense().getValue();
+        expenseAmount.setText(money.toString() + getString(R.string.badge));
 
         ImageView expenseType = (ImageView) view.findViewById(R.id.imageConfirmExpenseType);
         switch (viewModel.getExpenseType().getValue()) {
@@ -117,9 +125,18 @@ public class III_ConfirmExpenseFragment extends Fragment {
     }
 
     private void saveExpense() {
-        //Date date = Calendar.getInstance().getTime();
-        expenseViewModel.insert(new Expense(viewModel.getExpense().getValue(),
-                viewModel.getExpenseType().getValue(), viewModel.getPaymentMethod().getValue() ));
+        Calendar now = Calendar.getInstance();
+        int year = now.get(Calendar.YEAR);
+        int month = now.get(Calendar.MONTH) + 1; // Zero based!
+        int day = now.get(Calendar.DAY_OF_MONTH);
+
+        Expense expense = new Expense(viewModel.getExpense().getValue(),
+                viewModel.getExpenseType().getValue(), viewModel.getPaymentMethod().getValue(),day,month,year);
+
+        expenseViewModel.insert(expense);
+
+        Toast.makeText(this.getActivity(), "Expense added :)", Toast.LENGTH_SHORT).show();
 
     }
+
 }

@@ -59,6 +59,7 @@ public class HomeFragment extends Fragment {
 
     private boolean checkInputExpense(){
         try{
+            //TODO validate all possible inputs
             double expense = Double.parseDouble(inputExpense.getText().toString());
             return true;
         } catch(NumberFormatException e){
@@ -68,6 +69,8 @@ public class HomeFragment extends Fragment {
 
     private void saveExpense(){
         double expense = Double.parseDouble(inputExpense.getText().toString());
+        String expense_tmp = String.format("%.2f", expense);
+        expense = Double.parseDouble(expense_tmp);
         viewModel.setExpense(expense);
     }
 

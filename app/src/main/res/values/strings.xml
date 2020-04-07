@@ -25,5 +25,7 @@
     <string name="cash_payment">Cash</string>
     <string name="card_payment">Card</string>
 
+    <string name="badge">€</string>
+
 
 </resources>
