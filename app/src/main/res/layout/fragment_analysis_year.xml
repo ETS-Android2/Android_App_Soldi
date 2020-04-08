@@ -26,22 +26,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toTopOf="@+id/expensesPaymentChart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleYearTab" />
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/expensesPaymentChart"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineYearChart"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleYearTab"></com.github.mikephil.charting.charts.PieChart>
+            app:layout_constraintTop_toBottomOf="@+id/spinnerYear">
+
+        </com.github.mikephil.charting.charts.LineChart>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/expensesYearTypeChart"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineYearChart">
+
+        </com.github.mikephil.charting.charts.PieChart>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/expensesYearPaymentChart"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expensesYearTypeChart">
+
+        </com.github.mikephil.charting.charts.PieChart>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>

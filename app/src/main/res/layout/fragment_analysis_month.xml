@@ -26,21 +26,72 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toTopOf="@+id/expensesTypeChart"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/titleMonthTab" />
 
-        <com.github.mikephil.charting.charts.PieChart
-            android:id="@+id/expensesTypeChart"
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/lineMonthChart"
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/titleMonthTab"></com.github.mikephil.charting.charts.PieChart>
+            app:layout_constraintTop_toBottomOf="@+id/spinnerMonth" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/expensesMonthTypeChart"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="208dp"
+            app:layout_constraintTop_toBottomOf="@+id/lineMonthChart" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/expensesMonthPaymentChart"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/expensesMonthTypeChart" />
+
+        <ImageView
+            android:id="@+id/totalImage"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/total"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lineMonthChart" />
+
+        <TextView
+            android:id="@+id/totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:text="@string/total"
+            android:textSize="36sp"
+            app:layout_constraintStart_toEndOf="@+id/totalImage"
+            app:layout_constraintTop_toBottomOf="@+id/lineMonthChart" />
+
+        <TextView
+            android:id="@+id/textTotalExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="120dp"
+            android:text="12020"
+            android:textSize="36sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/totalText"
+            app:layout_constraintTop_toBottomOf="@+id/lineMonthChart" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
