@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.soldiapp.auxiliar.Expense;
 
-@Database(entities = {Expense.class}, version = 1)
+@Database(entities = {Expense.class}, version = 2)
 public abstract class ExpenseDatabase extends RoomDatabase {
 
     private static ExpenseDatabase instance;
@@ -46,12 +46,12 @@ public abstract class ExpenseDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            expenseDao.insert(new Expense(13.58,"supermarket",true));
-            expenseDao.insert(new Expense(9.5,"other",false));
-            expenseDao.insert(new Expense(59,"leisure",true));
-            expenseDao.insert(new Expense(12,"supermarket",true));
-            expenseDao.insert(new Expense(1.5,"supermarket",false));
-            expenseDao.insert(new Expense(102,"transport",true));
+            expenseDao.insert(new Expense(13.58,"supermarket",true,13,2,2020));
+            expenseDao.insert(new Expense(9.5,"other",false,13,2,2020));
+            expenseDao.insert(new Expense(59,"leisure",true,15,2,2020));
+            expenseDao.insert(new Expense(12,"supermarket",true,18,3,2020));
+            expenseDao.insert(new Expense(1.5,"supermarket",false,20,3,2020));
+            expenseDao.insert(new Expense(102,"transport",true,4,4,2020));
             return null;
         }
     }
