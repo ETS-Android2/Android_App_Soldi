@@ -1,11 +1,17 @@
 package com.example.soldiapp.auxiliar;
 
+import androidx.room.Ignore;
+
 import java.text.DateFormatSymbols;
 
 public class DayExpense {
     private int day;
     private int expense;
 
+    public DayExpense(){
+    }
+
+    @Ignore
     public DayExpense(int day, int expense) {
         this.day = day;
         this.expense = expense;

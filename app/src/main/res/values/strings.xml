@@ -26,7 +26,18 @@
     <string name="card_payment">Card</string>
 
     <string name="badge">€</string>
-    <string name="total">Total:</string>
+    <string name="total">Total expenses</string>
+    <string name="typeChartTitle">Type Of Expenses</string>
+    <string name="paymentChartTitle">Payment Methods</string>
+
+    <string name="monthTitle">Monthly Expenses</string>
+    <string name="yearTitle">Yearly Expenses</string>
+
+    <string name="days">Days</string>
+    <string name="months">Months</string>
+
+    <string name="currentMonth">Current Month: </string>
+    <string name="currentYear">Current Year: </string>
 
 
 

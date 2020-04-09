@@ -15,6 +15,7 @@ public class Expense_Payment {
     public Expense_Payment() {
     }
 
+    @Ignore
     public Expense_Payment(double expense, boolean paymentWithCash) {
         this.expense = expense;
         this.paymentWithCash = paymentWithCash;

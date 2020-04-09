@@ -2,9 +2,9 @@ package com.example.soldiapp.auxiliar;
 
 public class MonthExpense {
     private int month;
-    private int expense;
+    private double expense;
 
-    public MonthExpense(int month, int expense) {
+    public MonthExpense(int month, double expense) {
         this.month = month;
         this.expense = expense;
     }
@@ -17,11 +17,11 @@ public class MonthExpense {
         this.month = month;
     }
 
-    public int getExpense() {
+    public double getExpense() {
         return expense;
     }
 
-    public void setExpense(int expense) {
+    public void setExpense(double expense) {
         this.expense = expense;
     }
 

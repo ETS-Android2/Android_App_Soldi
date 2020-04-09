@@ -10,11 +10,10 @@ public class Expense_Type {
 
     private String expenseType;
 
-    //private Date date;
-
     public Expense_Type() {
     }
 
+    @Ignore
     public Expense_Type(double expense, String expenseType) {
         this.expense = expense;
         this.expenseType = expenseType;
@@ -28,10 +27,6 @@ public class Expense_Type {
         return expenseType;
     }
 
-    /*public Date getDate() {
-        return date;
-    }*/
-
     public void setExpense(double expense) {
         this.expense = expense;
     }
@@ -40,7 +35,4 @@ public class Expense_Type {
         this.expenseType = expenseType;
     }
 
-    /*public void setDate(Date date) {
-        this.date = date;
-    }*/
 }
