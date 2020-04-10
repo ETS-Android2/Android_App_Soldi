@@ -1,6 +1,5 @@
 package com.example.soldiapp.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,32 +15,23 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.soldiapp.R;
-import com.example.soldiapp.adapter.ChartAuxiliar;
-import com.example.soldiapp.auxiliar.DayExpense;
+import com.example.soldiapp.utils.ChartAuxiliar;
 import com.example.soldiapp.auxiliar.Expense_Payment;
 import com.example.soldiapp.auxiliar.Expense_Type;
-import com.example.soldiapp.auxiliar.MonthDate;
 import com.example.soldiapp.auxiliar.MonthExpense;
 import com.example.soldiapp.data_handling.ExpenseViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.github.mikephil.charting.utils.ColorTemplate.rgb;
 
 
 public class AnalysisYearFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -156,17 +145,17 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
         otherText.setText("0"+getString(R.string.badge));
 
         for (Expense_Type exp : expensesTypeList) {
-            if (exp.getExpenseType().equals(getString(R.string.supermarket_type).toLowerCase()))
+            if (exp.getExpenseType().equals(getString(R.string.supermarket_type)))
                 supermarketText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.transport_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.transport_type)))
                 transportText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.leisure_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.leisure_type)))
                 leisureText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.shopping_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.shopping_type)))
                 shoppingText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.bills_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.bills_type)))
                 billsText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.other_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.other_type)))
                 otherText.setText(exp.getExpense() + getString(R.string.badge));
         }
     }
@@ -189,7 +178,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
     }
 
     private void fillLineChart(List<MonthExpense> expenses) {
-        lineExpenseChart = (LineChart) getView().findViewById(R.id.lineYearChart);
+        lineExpenseChart = getView().findViewById(R.id.lineYearChart);
 
         lineExpenseChart = ChartAuxiliar.setLineChartConf(lineExpenseChart);
 
@@ -237,6 +226,8 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
         expenseTypeChart.setCenterText(getString(R.string.typeChartTitle));
         expenseTypeChart.setCenterTextSize(20);
 
+        expenses = adaptLanguage(expenses);
+
         ArrayList<PieEntry> yValues = new ArrayList<>();
 
         for (Expense_Type expense : expenses) {
@@ -274,9 +265,9 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
         ArrayList<PieEntry> yValues = new ArrayList<>();
 
         for (Expense_Payment expense : expenses) {
-            String payment = "Card";
+            String payment = getString(R.string.card_payment);
             if (expense.isPaymentWithCash())
-                payment = "Cash";
+                payment = getString(R.string.cash_payment);
             yValues.add(new PieEntry((int) expense.getExpense(), payment));
         }
 
@@ -329,5 +320,24 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
 
     private String capitalize(String str){
         return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+    private List<Expense_Type> adaptLanguage(List<Expense_Type> expenses) {
+        for(Expense_Type expense : expenses){
+            if(expense.getExpenseType().equals("supermarket"))
+                expense.setExpenseType(getString(R.string.supermarket_type));
+            else if(expense.getExpenseType().equals("transport"))
+                expense.setExpenseType(getString(R.string.transport_type));
+            else if(expense.getExpenseType().equals("leisure"))
+                expense.setExpenseType(getString(R.string.leisure_type));
+            else if(expense.getExpenseType().equals("shopping"))
+                expense.setExpenseType(getString(R.string.shopping_type));
+            else if(expense.getExpenseType().equals("bills"))
+                expense.setExpenseType(getString(R.string.bills_type));
+            else
+                expense.setExpenseType(getString(R.string.other_type));
+
+        }
+        return expenses;
     }
 }

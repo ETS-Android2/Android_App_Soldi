@@ -76,7 +76,7 @@ public class III_ConfirmExpenseFragment extends Fragment {
                         ((MainActivity) getActivity()).showBackButton(false);
                     } else {
 
-                        Toast.makeText(getActivity(), "Expense canceled", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.cancel_expense), Toast.LENGTH_SHORT).show();
 
                         navController.navigate(R.id.action_iii_ConfirmExpenseFragment_to_homeFragment);
                         ((MainActivity) getActivity()).showBackButton(false);
@@ -135,7 +135,7 @@ public class III_ConfirmExpenseFragment extends Fragment {
 
         expenseViewModel.insert(expense);
 
-        Toast.makeText(this.getActivity(), "Expense added :)", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this.getActivity(), getString(R.string.add_expense), Toast.LENGTH_SHORT).show();
 
     }
 

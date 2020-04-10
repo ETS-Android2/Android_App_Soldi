@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SoldiApp</string>
+    <string name="app_name">Soldi!</string>
     <string name="home">Home</string>
     <string name="analysis">Analysis</string>
     <string name="settings">Settings</string>
@@ -25,13 +25,16 @@
     <string name="cash_payment">Cash</string>
     <string name="card_payment">Card</string>
 
+    <string name="cancel_expense">Expense cancelled</string>
+    <string name="add_expense">Expense succesfully added :)</string>
+
     <string name="badge">€</string>
     <string name="total">Total expenses</string>
-    <string name="typeChartTitle">Type Of Expenses</string>
+    <string name="typeChartTitle">Type of Expenses</string>
     <string name="paymentChartTitle">Payment Methods</string>
 
     <string name="monthTitle">Monthly Expenses</string>
-    <string name="yearTitle">Yearly Expenses</string>
+    <string name="yearTitle" translatable="false">Yearly Expenses</string>
 
     <string name="days">Days</string>
     <string name="months">Months</string>
@@ -51,9 +54,20 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="confirmDelete">Data successfully deleted</string>
+    <string name="allExpenses">ALL expenses</string>
 
-
-
+    <string name="january">January</string>
+    <string name="february">February</string>
+    <string name="march">March</string>
+    <string name="april">April</string>
+    <string name="may">May</string>
+    <string name="june">June</string>
+    <string name="july">July</string>
+    <string name="august">August</string>
+    <string name="september">September</string>
+    <string name="october">October</string>
+    <string name="november">November</string>
+    <string name="december">December</string>
 
 
 </resources>

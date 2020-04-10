@@ -1,4 +1,4 @@
-package com.example.soldiapp.adapter;
+package com.example.soldiapp.utils;
 
 import android.graphics.Color;
 

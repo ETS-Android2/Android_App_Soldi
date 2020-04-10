@@ -28,11 +28,15 @@ public class MonthDate {
     }
 
     public String numberMonthToText(int n){
-        return new DateFormatSymbols().getMonths()[month-1];
+        return new DateFormatSymbols().getMonths()[n-1];
     }
 
     @Override
     public String toString() {
-        return numberMonthToText(getMonth()) +" - " + getYear() ;
+        return capitalize(numberMonthToText(getMonth())) +" - " + getYear() ;
+    }
+
+    private String capitalize(String str){
+        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 }

@@ -1,9 +1,7 @@
 package com.example.soldiapp.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,10 +14,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.soldiapp.R;
-import com.example.soldiapp.adapter.ChartAuxiliar;
+import com.example.soldiapp.utils.ChartAuxiliar;
 import com.example.soldiapp.auxiliar.DayExpense;
 import com.example.soldiapp.auxiliar.Expense_Payment;
 import com.example.soldiapp.auxiliar.Expense_Type;
@@ -27,24 +24,17 @@ import com.example.soldiapp.auxiliar.MonthDate;
 import com.example.soldiapp.data_handling.ExpenseViewModel;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.listener.OnChartGestureListener;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
-import java.time.Month;
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.github.mikephil.charting.utils.ColorTemplate.rgb;
 
 
 public class AnalysisMonthFragment extends Fragment implements AdapterView.OnItemSelectedListener {
@@ -99,7 +89,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
             //Title line chart
             titleLineChart = getView().findViewById(R.id.titleLineChartMonth);
-            titleLineChart.setText(getString(R.string.currentMonth) + extractMonth(String.valueOf(m.getMonth())));
+            titleLineChart.setText(getString(R.string.currentMonth) + capitalize(numberMonthToText(m.getMonth())));
 
             //Fill line chart
             dayExpenses = expenseViewModel.getDayExpenses(m.getMonth(), m.getYear());
@@ -144,17 +134,17 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         otherText.setText("0"+getString(R.string.badge));
 
         for (Expense_Type exp : expensesTypeList) {
-            if (exp.getExpenseType().equals(getString(R.string.supermarket_type).toLowerCase()))
+            if (exp.getExpenseType().equals(getString(R.string.supermarket_type)))
                 supermarketText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.transport_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.transport_type)))
                 transportText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.leisure_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.leisure_type)))
                 leisureText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.shopping_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.shopping_type)))
                 shoppingText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.bills_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.bills_type)))
                 billsText.setText(exp.getExpense() + getString(R.string.badge));
-            else if (exp.getExpenseType().equals(getString(R.string.other_type).toLowerCase()))
+            else if (exp.getExpenseType().equals(getString(R.string.other_type)))
                 otherText.setText(exp.getExpense() + getString(R.string.badge));
         }
     }
@@ -240,6 +230,8 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
         ArrayList<PieEntry> yValues = new ArrayList<>();
 
+        expenses = adaptLanguage(expenses);
+
         for (Expense_Type expense : expenses) {
             yValues.add(new PieEntry((int) expense.getExpense(), capitalize(expense.getExpenseType())));
         }
@@ -263,7 +255,6 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
     }
 
-
     private void fillExpensePaymentChart(List<Expense_Payment> expenses) {
 
         expensePaymentChart = getView().findViewById(R.id.expensesMonthPaymentChart);
@@ -275,9 +266,9 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         ArrayList<PieEntry> yValues = new ArrayList<>();
 
         for (Expense_Payment expense : expenses) {
-            String payment = "Card";
+            String payment = getString(R.string.card_payment);
             if (expense.isPaymentWithCash())
-                payment = "Cash";
+                payment = getString(R.string.cash_payment);
             yValues.add(new PieEntry((int) expense.getExpense(), payment));
         }
 
@@ -308,7 +299,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         int month = extractMonth(month_year[0]);
         int year = Integer.parseInt(month_year[1]);
 
-        titleLineChart.setText(month_year[0]+ " - " + year);
+        titleLineChart.setText(capitalize(text));
 
         dayExpenses = expenseViewModel.getDayExpenses(month, year);
         fillLineChart(dayExpenses);
@@ -331,37 +322,59 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
     }
 
     private String capitalize(String str){
-       return str.substring(0, 1).toUpperCase() + str.substring(1);
+       return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 
     private int extractMonth(String s) {
-        switch (s.toLowerCase()) {
-            case "january":
-                return 1;
-            case "february":
-                return 2;
-            case "march":
-                return 3;
-            case "april":
-                return 4;
-            case "may":
-                return 5;
-            case "june":
-                return 6;
-            case "july":
-                return 7;
-            case "august":
-                return 8;
-            case "september":
-                return 9;
-            case "october":
-                return 10;
-            case "november":
-                return 11;
-            case "december":
-                return 12;
-            default:
-                return -1;
-        }
+        s = capitalize(s);
+        if(s.equals(getString(R.string.january)))
+            return 1;
+        else if(s.equals(getString(R.string.february)))
+            return 2;
+        else if(s.equals(getString(R.string.march)))
+            return 3;
+        else if(s.equals(getString(R.string.april)))
+            return 4;
+        else if(s.equals(getString(R.string.may)))
+            return 5;
+        else if(s.equals(getString(R.string.june)))
+            return 6;
+        else if(s.equals(getString(R.string.july)))
+            return 7;
+        else if(s.equals(getString(R.string.august)))
+            return 8;
+        else if(s.equals(getString(R.string.september)))
+            return 9;
+        else if(s.equals(getString(R.string.october)))
+            return 10;
+        else if(s.equals(getString(R.string.november)))
+            return 11;
+        else
+            return 12;
+
     }
+
+    public String numberMonthToText(int n){
+        return new DateFormatSymbols().getMonths()[n-1];
+    }
+
+    private List<Expense_Type> adaptLanguage(List<Expense_Type> expenses) {
+        for(Expense_Type expense : expenses){
+            if(expense.getExpenseType().equals("supermarket"))
+                expense.setExpenseType(getString(R.string.supermarket_type));
+            else if(expense.getExpenseType().equals("transport"))
+                expense.setExpenseType(getString(R.string.transport_type));
+            else if(expense.getExpenseType().equals("leisure"))
+                expense.setExpenseType(getString(R.string.leisure_type));
+            else if(expense.getExpenseType().equals("shopping"))
+                expense.setExpenseType(getString(R.string.shopping_type));
+            else if(expense.getExpenseType().equals("bills"))
+                expense.setExpenseType(getString(R.string.bills_type));
+            else
+                expense.setExpenseType(getString(R.string.other_type));
+
+        }
+        return expenses;
+    }
+
 }

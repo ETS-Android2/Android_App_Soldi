@@ -1,8 +1,8 @@
 package com.example.soldiapp.auxiliar;
 
-import androidx.room.Entity;
+
 import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
+
 
 public class Expense_Type {
 

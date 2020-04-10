@@ -1,4 +1,4 @@
-package com.example.soldiapp.adapter;
+package com.example.soldiapp.utils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

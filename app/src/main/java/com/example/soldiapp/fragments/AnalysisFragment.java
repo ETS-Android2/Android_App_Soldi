@@ -1,6 +1,5 @@
 package com.example.soldiapp.fragments;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,24 +8,11 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.soldiapp.R;
-import com.example.soldiapp.adapter.TabAdapter;
-import com.example.soldiapp.auxiliar.Expense;
-import com.example.soldiapp.auxiliar.Expense_Payment;
-import com.example.soldiapp.auxiliar.Expense_Type;
-import com.example.soldiapp.data_handling.ExpenseViewModel;
-import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.data.PieData;
-import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.utils.ColorTemplate;
+import com.example.soldiapp.utils.TabAdapter;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AnalysisFragment extends Fragment {
 
@@ -73,8 +59,8 @@ public class AnalysisFragment extends Fragment {
     private void setUpViewPager(ViewPager viewPager) {
         TabAdapter adapter = new TabAdapter(getChildFragmentManager());
 
-        adapter.addFragment(new AnalysisMonthFragment(), "Month");
-        adapter.addFragment(new AnalysisYearFragment(), "Year");
+        adapter.addFragment(new AnalysisMonthFragment(), getString(R.string.month));
+        adapter.addFragment(new AnalysisYearFragment(), getString(R.string.year));
 
         viewPager.setAdapter(adapter);
     }

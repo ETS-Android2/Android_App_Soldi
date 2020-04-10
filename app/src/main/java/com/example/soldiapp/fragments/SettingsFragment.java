@@ -2,10 +2,10 @@ package com.example.soldiapp.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +20,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.soldiapp.MainActivity;
 import com.example.soldiapp.R;
 import com.example.soldiapp.auxiliar.MonthDate;
 import com.example.soldiapp.data_handling.ExpenseViewModel;
@@ -29,7 +28,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SettingsFragment extends Fragment {
+
+    public static final String APP_PREFERENCES = "AppPrefs";
 
     Button deleteButton;
     Button deleteAllButton;
@@ -45,6 +48,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         expenseViewModel = new ViewModelProvider(this).get(ExpenseViewModel.class); //ViewModel dealing with database
         monthsRegisteredList = expenseViewModel.getMonthsRegistered();
@@ -74,22 +78,45 @@ public class SettingsFragment extends Fragment {
 
     }
 
-    //ARREGLAR!!!!!!!!!!!!!!!!!!
-    private void setAppLocale(String localeCode){
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.setLocale(new Locale(localeCode.toLowerCase()));
-        res.updateConfiguration(conf,dm);
-    }
-
     private void addListenersToLanguages(){
+
         spanishLanguage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setAppLocale("es");
+                changeLanguage("es");
+        }
+        });
+        englishLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeLanguage("en");
             }
         });
+        italianLanguage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeLanguage("it");
+            }
+        });
+    }
+
+    private void changeLanguage(String language) {
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale=locale;
+        getActivity().getBaseContext().getResources().updateConfiguration(configuration,getActivity().getBaseContext().
+                getResources().getDisplayMetrics());
+
+        SharedPreferences settings = getActivity().getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putString("locale",language);
+        prefEditor.commit();
+
+        //It is required to recreate the activity to reflect the change in UI.
+        Intent intent = getActivity().getIntent();
+        getActivity().finish();
+        startActivity(intent);
     }
 
     private void addListenersToButtons() {
@@ -126,7 +153,7 @@ public class SettingsFragment extends Fragment {
             public void onClick(View v) {
                 new AlertDialog.Builder(getContext())
                         .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle(getString(R.string.deleteConfirmationTitle) +" ALL expenses")
+                        .setTitle(getString(R.string.deleteConfirmationTitle) +" " + getString(R.string.allExpenses))
                         .setMessage(getString(R.string.deleteConfirmationText))
                         .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener()
                         {

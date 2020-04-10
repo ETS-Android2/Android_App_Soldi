@@ -1,59 +1,72 @@
 <resources>
-    <string name="app_name">SoldiApp</string>
-    <string name="home">Home</string>
-    <string name="analysis">Analysis</string>
-    <string name="settings">Settings</string>
+    <string name="app_name">Soldi!</string>
+    <string name="home">Inizio</string>
+    <string name="analysis">Analisi</string>
+    <string name="settings">Impostazioni</string>
     <string name="about">About</string>
-    <string name="exit">Exit</string>
+    <string name="exit">Uscire</string>
 
     //Accessibility for blind people
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Aprire cassetto di navigazione</string>
+    <string name="navigation_drawer_close">Chiudere cassetto di navigazione</string>
 
-    <string name="quantity_expense_title">How much?</string>
-    <string name="expense_type_title">What?</string>
-    <string name="payment_method_title">How?</string>
-    <string name="confirm_expense_title">Is it okay?</string>
+    <string name="quantity_expense_title">Quanto?</string>
+    <string name="expense_type_title">Cosa?</string>
+    <string name="payment_method_title">Come?</string>
+    <string name="confirm_expense_title">Va bene?</string>
 
-    <string name="supermarket_type">Supermarket</string>
-    <string name="transport_type">Transport</string>
-    <string name="leisure_type">Leisure</string>
+    <string name="supermarket_type">Supermercato</string>
+    <string name="transport_type">Trasporto</string>
+    <string name="leisure_type">Ozio</string>
     <string name="shopping_type">Shopping</string>
-    <string name="bills_type">Bills</string>
-    <string name="other_type">Other</string>
+    <string name="bills_type">Fatture</string>
+    <string name="other_type">Altro</string>
 
-    <string name="cash_payment">Cash</string>
-    <string name="card_payment">Card</string>
+    <string name="cash_payment">Contante</string>
+    <string name="card_payment">Carta</string>
 
     <string name="badge">€</string>
-    <string name="total">Total expenses</string>
-    <string name="typeChartTitle">Type Of Expenses</string>
-    <string name="paymentChartTitle">Payment Methods</string>
+    <string name="total">Spese Totali</string>
+    <string name="typeChartTitle">Tipo di Spese</string>
+    <string name="paymentChartTitle">Metodo di Pagamento</string>
 
-    <string name="monthTitle">Monthly Expenses</string>
-    <string name="yearTitle">Yearly Expenses</string>
+    <string name="monthTitle">Spese Mensili</string>
+    <string name="yearTitle">Spese Anuali</string>
 
-    <string name="days">Days</string>
-    <string name="months">Months</string>
-    <string name="year">Year</string>
-    <string name="month">Month</string>
+    <string name="days">Giorni</string>
+    <string name="months">Mesi</string>
+    <string name="year">Anno</string>
+    <string name="month">Mese</string>
 
-    <string name="currentMonth">Current Month: </string>
-    <string name="currentYear">Current Year: </string>
+    <string name="currentMonth">Corrente Mese: </string>
+    <string name="currentYear">Corrente Anno: </string>
 
-    <string name="selectLanguage">Lengua</string>
-    <string name="deleteData">Delete expenses</string>
-    <string name="deleteButton">Delete</string>
-    <string name="deleteButtonAll">Delete All</string>
+    <string name="selectLanguage">Lingua</string>
+    <string name="deleteData">Cancellare Spese</string>
+    <string name="deleteButton">Cancellare</string>
+    <string name="deleteButtonAll">Cancellare Tutto</string>
 
-    <string name="deleteConfirmationTitle">Delete expenses from </string>
-    <string name="deleteConfirmationText">Are you sure you want to delete them? </string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="confirmDelete">Data successfully deleted</string>
+    <string name="deleteConfirmationTitle">Cancellare le spese da </string>
+    <string name="deleteConfirmationText">Sei sicuro di volerli eliminare? </string>
+    <string name="yes">Si</string>
+    <string name="no">Non</string>
+    <string name="confirmDelete">Dati eliminati correttamente</string>
+    <string name="allExpenses">TUTTE le spese</string>
 
-
-
+    <string name="january">Gennaio</string>
+    <string name="february">Febbraio</string>
+    <string name="march">Marzo</string>
+    <string name="april">Aprile</string>
+    <string name="may">Maggio</string>
+    <string name="june">Giugno</string>
+    <string name="july">Luglio</string>
+    <string name="august">Agosto</string>
+    <string name="september">Settembre</string>
+    <string name="october">Ottobre</string>
+    <string name="november">Novembre</string>
+    <string name="december">Dicembre</string>
+    <string name="cancel_expense">Spese annullate</string>
+    <string name="add_expense">Spese aggiunte :)</string>
 
 
 </resources>

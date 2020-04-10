@@ -10,6 +10,9 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.SharedPreferences;
+
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +23,11 @@ import com.example.soldiapp.fragments.HomeFragment;
 import com.example.soldiapp.fragments.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
 
+
+import java.util.Locale;
+
+import static com.example.soldiapp.fragments.SettingsFragment.APP_PREFERENCES;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private ActionBarDrawerToggle drawerToggle;
@@ -29,7 +37,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        languageCheck();
+
         setContentView(R.layout.activity_main);
+
 
         //Navigation
         setupNavigation();
@@ -179,5 +191,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public Toolbar getToolbar() {
         return toolbar;
+    }
+
+    public void languageCheck(){
+        SharedPreferences settings = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
+
+        String language = settings.getString("locale","en");
+
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration configuration = new Configuration();
+        configuration.locale=locale;
+        getBaseContext().getResources().updateConfiguration(configuration,getBaseContext().
+                getResources().getDisplayMetrics());
+
     }
 }

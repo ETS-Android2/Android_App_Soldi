@@ -1,6 +1,5 @@
-package com.example.soldiapp.adapter;
+package com.example.soldiapp.utils;
 
-import com.example.soldiapp.R;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
 public class BadgeFormatter extends ValueFormatter {
