@@ -17,18 +17,10 @@ import java.util.List;
 public class ExpenseViewModel extends AndroidViewModel {
     private ExpenseRepository repository;
 
-    private List<Expense> allExpenses;
-
-    private List<MonthDate> monthsRegistered;
-    private List<Integer> yearsRegistered;
 
     public ExpenseViewModel(@NonNull Application application){
         super(application);
         repository = new ExpenseRepository(application);
-        allExpenses = repository.getAllExpenses();
-        monthsRegistered = repository.getMonthsRegistered();
-        yearsRegistered = repository.getYearsRegistered();
-
     }
 
     public void insert(Expense expense){
@@ -36,7 +28,7 @@ public class ExpenseViewModel extends AndroidViewModel {
     }
 
     public List<Expense> getAllExpenses(){
-        return allExpenses;
+        return getAllExpenses();
     }
 
     public List<Expense_Type> getSumTypeExpenses(int month, int year){
@@ -57,10 +49,10 @@ public class ExpenseViewModel extends AndroidViewModel {
 
 
     public List<MonthDate> getMonthsRegistered(){
-        return monthsRegistered;
+        return repository.getMonthsRegistered();
     }
     public List<Integer> getYearsRegistered(){
-        return yearsRegistered;
+        return repository.getYearsRegistered();
     }
 
     public List<DayExpense> getDayExpenses(int month,int year){
@@ -68,6 +60,14 @@ public class ExpenseViewModel extends AndroidViewModel {
     }
     public List<MonthExpense> getMonthExpenses(int month){
         return repository.getMonthExpenses(month);
+    }
+
+    public void delete(int month, int year){
+        repository.delete(month,year);
+    }
+
+    public void deleteAll(){
+        repository.deleteAll();
     }
 
 

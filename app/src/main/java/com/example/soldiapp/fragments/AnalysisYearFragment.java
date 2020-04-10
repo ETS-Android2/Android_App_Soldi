@@ -89,32 +89,35 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        prepareSpinner(view);
+        if(yearsRegisteredList.size()!=0){
+            prepareSpinner(view);
 
-        int year = yearsRegisteredList.get(0);
+            int year = yearsRegisteredList.get(0);
 
-        //Title line chart
-        titleLineChart = getView().findViewById(R.id.titleLineChartYear);
-        titleLineChart.setText(getString(R.string.currentYear) + year);
+            //Title line chart
+            titleLineChart = getView().findViewById(R.id.titleLineChartYear);
+            titleLineChart.setText(getString(R.string.currentYear) + year);
 
-        //Fill line chart
-        monthExpenses = expenseViewModel.getMonthExpenses(year);
-        fillLineChart(monthExpenses);
+            //Fill line chart
+            monthExpenses = expenseViewModel.getMonthExpenses(year);
+            fillLineChart(monthExpenses);
 
-        //Total expense
-        totalText = view.findViewById(R.id.textTotalExpenseYear);
-        totalText.setText(totalExpense(monthExpenses) + " " + getString(R.string.badge));
+            //Total expense
+            totalText = view.findViewById(R.id.textTotalExpenseYear);
+            totalText.setText(String.format("%.2f",totalExpense(monthExpenses)) + " " + getString(R.string.badge));
 
-        //Fill expense type chart
-        expensesTypeList = expenseViewModel.getSumTypeExpenses(year);
-        fillExpenseTypeChart(expensesTypeList);
-        //Fill breakdown of type expenses
-        fillBreakdownTypeExpenses();
+            //Fill expense type chart
+            expensesTypeList = expenseViewModel.getSumTypeExpenses(year);
+            fillExpenseTypeChart(expensesTypeList);
+            //Fill breakdown of type expenses
+            fillBreakdownTypeExpenses();
 
-        //Fill payment type chart
-        expensesPaymentList = expenseViewModel.getSumPaymentExpenses(year);
-        fillExpensePaymentChart(expensesPaymentList);
-        fillBreakdownPayment();
+            //Fill payment type chart
+            expensesPaymentList = expenseViewModel.getSumPaymentExpenses(year);
+            fillExpensePaymentChart(expensesPaymentList);
+            fillBreakdownPayment();
+        }
+
 
     }
 
@@ -169,7 +172,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
     }
 
     private double totalExpense(List<MonthExpense> monthExpenses) {
-        double sum = 0;
+        double sum = 0.0;
         for (MonthExpense expense : monthExpenses) {
             sum += expense.getExpense();
         }
@@ -308,7 +311,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
         monthExpenses = expenseViewModel.getMonthExpenses(year);
         fillLineChart(monthExpenses);
 
-        totalText.setText(totalExpense(monthExpenses) + getString(R.string.badge));
+        totalText.setText(String.format("%.2f",totalExpense(monthExpenses)) + " " +  getString(R.string.badge));
 
         expensesTypeList = expenseViewModel.getSumTypeExpenses(year);
         fillExpenseTypeChart(expensesTypeList);

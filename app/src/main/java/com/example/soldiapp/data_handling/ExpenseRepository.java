@@ -48,6 +48,49 @@ public class ExpenseRepository {
     }
 
     /**
+     * Delete expenses of a given month and year
+     * @param month
+     * @param year
+     */
+    public void delete(int month, int year) {
+        new DeleteExpensesAsyncTask(expenseDao).execute(month,year);
+    }
+    private static class DeleteExpensesAsyncTask extends AsyncTask<Integer, Void, Void> {
+        private ExpenseDao expenseDao;
+
+        private DeleteExpensesAsyncTask(ExpenseDao expenseDao) {
+            this.expenseDao = expenseDao;
+        }
+
+        @Override
+        protected Void doInBackground(Integer... integers) {
+            expenseDao.deleteExpenses(integers[0],integers[1]);
+            return null;
+        }
+    }
+
+    /**
+     * Delete all expenses
+     */
+    public void deleteAll() {
+        new DeleteAllExpensesAsyncTask(expenseDao).execute();
+    }
+    private static class DeleteAllExpensesAsyncTask extends AsyncTask<Void, Void, Void> {
+        private ExpenseDao expenseDao;
+
+        private DeleteAllExpensesAsyncTask(ExpenseDao expenseDao) {
+            this.expenseDao = expenseDao;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            expenseDao.deleteAllExpenses();
+            return null;
+        }
+    }
+
+
+    /**
      * Get all expenses from database
      *
      * @return List<Expense>

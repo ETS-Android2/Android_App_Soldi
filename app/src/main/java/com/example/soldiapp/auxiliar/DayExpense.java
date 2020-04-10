@@ -6,13 +6,13 @@ import java.text.DateFormatSymbols;
 
 public class DayExpense {
     private int day;
-    private int expense;
+    private double expense;
 
     public DayExpense(){
     }
 
     @Ignore
-    public DayExpense(int day, int expense) {
+    public DayExpense(int day, double expense) {
         this.day = day;
         this.expense = expense;
     }
@@ -25,11 +25,11 @@ public class DayExpense {
         this.day = day;
     }
 
-    public int getExpense() {
+    public double getExpense() {
         return expense;
     }
 
-    public void setExpense(int expense) {
+    public void setExpense(double expense) {
         this.expense = expense;
     }
 

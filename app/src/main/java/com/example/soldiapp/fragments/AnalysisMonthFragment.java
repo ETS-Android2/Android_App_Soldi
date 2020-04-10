@@ -91,33 +91,36 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        prepareSpinner(view);
+        if(monthsRegisteredList.size()!=0){
+            prepareSpinner(view);
 
-        //Get last registered month and year
-        MonthDate m = monthsRegisteredList.get(0);
+            //Get last registered month and year
+            MonthDate m = monthsRegisteredList.get(0);
 
-        //Title line chart
-        titleLineChart = getView().findViewById(R.id.titleLineChartMonth);
-        titleLineChart.setText(getString(R.string.currentMonth) + extractMonth(String.valueOf(m.getMonth())));
+            //Title line chart
+            titleLineChart = getView().findViewById(R.id.titleLineChartMonth);
+            titleLineChart.setText(getString(R.string.currentMonth) + extractMonth(String.valueOf(m.getMonth())));
 
-        //Fill line chart
-        dayExpenses = expenseViewModel.getDayExpenses(m.getMonth(), m.getYear());
-        fillLineChart(dayExpenses);
+            //Fill line chart
+            dayExpenses = expenseViewModel.getDayExpenses(m.getMonth(), m.getYear());
+            fillLineChart(dayExpenses);
 
-        //Total expense
-        totalText = view.findViewById(R.id.textTotalExpense);
-        totalText.setText(totalExpense(dayExpenses) + getString(R.string.badge));
+            //Total expense
+            totalText = view.findViewById(R.id.textTotalExpense);
+            totalText.setText(String.format("%.2f",totalExpense(dayExpenses)) + " " + getString(R.string.badge));
 
-        //Fill expense type chart
-        expensesTypeList = expenseViewModel.getSumTypeExpenses(m.getMonth(), m.getYear());
-        fillExpenseTypeChart(expensesTypeList);
-        //Fill breakdown of type expenses
-        fillBreakdownTypeExpenses();
+            //Fill expense type chart
+            expensesTypeList = expenseViewModel.getSumTypeExpenses(m.getMonth(), m.getYear());
+            fillExpenseTypeChart(expensesTypeList);
+            //Fill breakdown of type expenses
+            fillBreakdownTypeExpenses();
 
-        //Fill expense payment chart
-        expensesPaymentList = expenseViewModel.getSumPaymentExpenses(m.getMonth(), m.getYear());
-        fillExpensePaymentChart(expensesPaymentList);
-        fillBreakdownPayment();
+            //Fill expense payment chart
+            expensesPaymentList = expenseViewModel.getSumPaymentExpenses(m.getMonth(), m.getYear());
+            fillExpensePaymentChart(expensesPaymentList);
+            fillBreakdownPayment();
+        }
+
     }
 
     private void fillBreakdownTypeExpenses() {
@@ -189,7 +192,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         for (int i = 1; i < 32; i++) {
             if (days < expenses.size()) {
                 if (i == expenses.get(days).getDay()) { //Add days in which there are expenses
-                    values.add(new Entry(i, expenses.get(days).getExpense()));
+                    values.add(new Entry(i, (int) expenses.get(days).getExpense()));
                     days++;
                 } else {
                     if (i == 1 || i == 31)
@@ -310,7 +313,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         dayExpenses = expenseViewModel.getDayExpenses(month, year);
         fillLineChart(dayExpenses);
 
-        totalText.setText(totalExpense(dayExpenses) + " " + getString(R.string.badge));
+        totalText.setText(String.format("%.2f",totalExpense(dayExpenses)) + " " + getString(R.string.badge));
 
         expensesTypeList = expenseViewModel.getSumTypeExpenses(month, year);
         fillExpenseTypeChart(expensesTypeList);

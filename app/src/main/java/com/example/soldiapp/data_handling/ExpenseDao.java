@@ -1,6 +1,7 @@
 package com.example.soldiapp.data_handling;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -48,8 +49,9 @@ public interface ExpenseDao {
     @Query("SELECT SUM(expense) AS expense, month FROM expense_table WHERE year=:year GROUP BY month; ")
     List<MonthExpense> getMonthExpenses(int year);
 
+    @Query("DELETE FROM expense_table WHERE month = :month AND year = :year")
+    void deleteExpenses(int month, int year);
 
-
-
-
+    @Query("DELETE FROM expense_table")
+    void deleteAllExpenses();
 }

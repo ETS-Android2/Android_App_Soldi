@@ -41,7 +41,7 @@
     <string name="currentMonth">Current Month: </string>
     <string name="currentYear">Current Year: </string>
 
-    <string name="selectLanguage">Language</string>
+    <string name="selectLanguage">Lengua</string>
     <string name="deleteData">Delete expenses</string>
     <string name="deleteButton">Delete</string>
     <string name="deleteButtonAll">Delete All</string>

@@ -31,6 +31,9 @@ public class ChartAuxiliar {
         p.setEntryLabelTextSize(18);
         p.setDrawEntryLabels(false);
 
+        p.setNoDataText("Add some expenses to see the analysis");
+        p.setNoDataTextColor(Color.BLACK);
+
         return p;
     }
 
@@ -70,6 +73,9 @@ public class ChartAuxiliar {
         chart.setScaleEnabled(false);
         chart.getAxisLeft().setDrawGridLines(false);
         chart.getXAxis().setDrawGridLines(false);
+
+        chart.setNoDataText("Add some expenses to see the analysis");
+        chart.setNoDataTextColor(Color.BLACK);
 
         chart.getDescription().setEnabled(false);
 
