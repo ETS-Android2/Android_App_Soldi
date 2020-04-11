@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Soldi!</string>
+    <string name="app_name">Soldi</string>
     <string name="home">Inizio</string>
     <string name="analysis">Analisi</string>
     <string name="settings">Impostazioni</string>
@@ -26,19 +26,19 @@
     <string name="card_payment">Carta</string>
 
     <string name="badge">€</string>
-    <string name="total">Spese Totali</string>
+    <string name="total">Spese totali</string>
     <string name="typeChartTitle">Tipo di Spese</string>
     <string name="paymentChartTitle">Metodo di Pagamento</string>
 
-    <string name="monthTitle">Spese Mensili</string>
-    <string name="yearTitle">Spese Anuali</string>
+    <string name="monthTitle">Spese mensili</string>
+    <string name="yearTitle">Spese anuali</string>
 
     <string name="days">Giorni</string>
     <string name="months">Mesi</string>
     <string name="year">Anno</string>
     <string name="month">Mese</string>
 
-    <string name="currentMonth">Corrente Mese: </string>
+    <string name="currentMonth">"Corrente mese: "</string>
     <string name="currentYear">Corrente Anno: </string>
 
     <string name="selectLanguage">Lingua</string>
@@ -67,6 +67,14 @@
     <string name="december">Dicembre</string>
     <string name="cancel_expense">Spese annullate</string>
     <string name="add_expense">Spese aggiunte :)</string>
+    <string name="bodyShare">Il tempo è denaro! Usa l\'app Soldi per gestire le tue spese nel modo più semplice :) Dai un\'occhiata e risparmia tempo:</string>
+    <string name="subjectShare">Prova questa semplice app per gestire le tue spese!</string>
+    <string name="shareUsing">Condividi usando</string>
+    <string name="share">Condividere</string>
+    <string name="shareTitle">Condividere con i miei amici</string>
+    <string name="briefDescription">Il tempo è denaro!</string>
+    <string name="addingExpense">Aggiungendo spese</string>
+    <string name="confirmExpense">Conferma spese</string>
 
 
 </resources>

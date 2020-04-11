@@ -56,7 +56,7 @@ public class III_ConfirmExpenseFragment extends Fragment {
         final NavController navController = Navigation.findNavController(view);
 
         //Set toolbar title
-        ((MainActivity) getActivity()).getToolbar().setTitle(getString(R.string.confirm_expense_title));
+        ((MainActivity) getActivity()).getToolbar().setTitle(getString(R.string.confirmExpense));
 
         //Add listeners to the buttons
         ArrayList<ImageView> confirmButtons = new ArrayList<ImageView>();

@@ -10,14 +10,15 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
-import com.example.soldiapp.fragments.AboutFragment;
 import com.example.soldiapp.fragments.AnalysisFragment;
 import com.example.soldiapp.fragments.HomeFragment;
 import com.example.soldiapp.fragments.SettingsFragment;
@@ -167,18 +168,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new SettingsFragment()).commit();
                 getSupportActionBar().setTitle(getString(R.string.settings));
                 break;
-            case R.id.nav_about:
-                getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-                        new AboutFragment()).commit();
-                getSupportActionBar().setTitle(getString(R.string.about));
+            case R.id.nav_share:
+                shareApp();
                 break;
-            /*case R.id.nav_share:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
-                break;*/
         }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void shareApp(){
+        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        String shareBody =getString(R.string.bodyShare);
+        String shareSubject = getString(R.string.subjectShare);
+
+        sharingIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT,shareSubject);
+
+        startActivity(Intent.createChooser(sharingIntent,getString(R.string.shareUsing)));
+
+        Toast.makeText(this, getString(R.string.share), Toast.LENGTH_SHORT).show();
     }
 
     public DrawerLayout getDrawer() {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Soldi!</string>
+    <string name="app_name">Soldi</string>
     <string name="home">Inicio</string>
     <string name="analysis">Analisis</string>
     <string name="settings">Ajustes</string>
@@ -30,15 +30,15 @@
     <string name="typeChartTitle">Tipos de Gasto</string>
     <string name="paymentChartTitle">Métodos de Pago</string>
 
-    <string name="monthTitle">Gastos Mensuales</string>
-    <string name="yearTitle">Gastos Anuales</string>
+    <string name="monthTitle">Gastos mensuales</string>
+    <string name="yearTitle">Gastos anuales</string>
 
     <string name="days">Días</string>
     <string name="months">Meses</string>
     <string name="year">Año</string>
     <string name="month">Mes</string>
 
-    <string name="currentMonth">Mes Actual: </string>
+    <string name="currentMonth">"Mes actual: "</string>
     <string name="currentYear">Año Actual: </string>
 
     <string name="selectLanguage">Idioma</string>
@@ -67,6 +67,14 @@
     <string name="december">Diciembre</string>
     <string name="cancel_expense">Gasto cancelado</string>
     <string name="add_expense">Gasto añadido :)</string>
+    <string name="bodyShare">¡El tiempo es oro! Usa la aplicación Soldi para gestionar tus gastos de la manera más sencilla :) Échale un vistazo y ahorra tu tiempo:</string>
+    <string name="subjectShare">¡Prueba esta sencilla aplicación para administrar tus gastos!</string>
+    <string name="shareUsing">Compartir Usando</string>
+    <string name="share">Compartir</string>
+    <string name="shareTitle">Compartir con mis amigso</string>
+    <string name="briefDescription">¡El tiempo es oro!</string>
+    <string name="addingExpense">Añadiendo gasto</string>
+    <string name="confirmExpense">Confirma gasto</string>
 
 
 </resources>

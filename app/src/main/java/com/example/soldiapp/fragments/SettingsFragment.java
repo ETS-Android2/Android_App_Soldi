@@ -23,6 +23,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.soldiapp.R;
 import com.example.soldiapp.auxiliar.MonthDate;
 import com.example.soldiapp.data_handling.ExpenseViewModel;
+import com.example.soldiapp.utils.MonthHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,6 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         expenseViewModel = new ViewModelProvider(this).get(ExpenseViewModel.class); //ViewModel dealing with database
         monthsRegisteredList = expenseViewModel.getMonthsRegistered();
@@ -134,7 +134,7 @@ public class SettingsFragment extends Fragment {
                                 String text = spinnerDelete.getSelectedItem().toString();
                                 String[] month_year = text.split(" - ");
 
-                                int month = extractMonth(month_year[0]);
+                                int month = MonthHandler.extractMonth(getActivity(),month_year[0]);
                                 int year = Integer.parseInt(month_year[1]);
 
                                 expenseViewModel.delete(month, year);
@@ -195,34 +195,4 @@ public class SettingsFragment extends Fragment {
         spinnerDelete.setAdapter(adapter);
     }
 
-    private int extractMonth(String s) {
-        switch (s.toLowerCase()) {
-            case "january":
-                return 1;
-            case "february":
-                return 2;
-            case "march":
-                return 3;
-            case "april":
-                return 4;
-            case "may":
-                return 5;
-            case "june":
-                return 6;
-            case "july":
-                return 7;
-            case "august":
-                return 8;
-            case "september":
-                return 9;
-            case "october":
-                return 10;
-            case "november":
-                return 11;
-            case "december":
-                return 12;
-            default:
-                return -1;
-        }
-    }
 }

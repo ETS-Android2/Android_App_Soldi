@@ -106,6 +106,9 @@ public class ChartAuxiliar {
         dataSet.setDrawValues(false);
         dataSet.setCircleRadius(6);
 
+        if(dataSet.getValues().size()<8)
+            dataSet.setDrawValues(true);
+
 
         dataSet.setValueFormatter(new BadgeFormatter());
 

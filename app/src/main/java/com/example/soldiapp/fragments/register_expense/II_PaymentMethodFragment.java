@@ -43,7 +43,7 @@ public class II_PaymentMethodFragment extends Fragment {
         final NavController navController = Navigation.findNavController(view);
 
         //Set toolbar title
-        ((MainActivity) getActivity()).getToolbar().setTitle(getString(R.string.payment_method_title));
+        ((MainActivity) getActivity()).getToolbar().setTitle(getString(R.string.addingExpense));
 
         //Add listeners to buttons
         ArrayList<ImageView> paymentButtons = new ArrayList<ImageView>();

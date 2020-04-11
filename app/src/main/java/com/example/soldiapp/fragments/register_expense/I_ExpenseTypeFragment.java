@@ -43,7 +43,7 @@ public class I_ExpenseTypeFragment extends Fragment {
         final NavController navController = Navigation.findNavController(view);
 
         //Change toolbar title
-        ((MainActivity)getActivity()).getToolbar().setTitle(getString(R.string.expense_type_title));
+        ((MainActivity)getActivity()).getToolbar().setTitle(getString(R.string.addingExpense));
 
         //Add buttons listeners
         ArrayList<ImageView> typeButtons = new ArrayList<ImageView>();

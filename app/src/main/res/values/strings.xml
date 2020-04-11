@@ -1,10 +1,14 @@
 <resources>
-    <string name="app_name">Soldi!</string>
+    <string name="app_name">Soldi</string>
+    <string name="briefDescription">Time is gold!</string>
     <string name="home">Home</string>
     <string name="analysis">Analysis</string>
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="exit">Exit</string>
+
+    <string name="addingExpense">Adding expense</string>
+    <string name="confirmExpense">Confirm expense</string>
 
     //Accessibility for blind people
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -26,22 +30,22 @@
     <string name="card_payment">Card</string>
 
     <string name="cancel_expense">Expense cancelled</string>
-    <string name="add_expense">Expense succesfully added :)</string>
+    <string name="add_expense">Expense added :)</string>
 
     <string name="badge">€</string>
     <string name="total">Total expenses</string>
     <string name="typeChartTitle">Type of Expenses</string>
     <string name="paymentChartTitle">Payment Methods</string>
 
-    <string name="monthTitle">Monthly Expenses</string>
-    <string name="yearTitle" translatable="false">Yearly Expenses</string>
+    <string name="monthTitle">Monthly expenses</string>
+    <string name="yearTitle">Yearly expenses</string>
 
     <string name="days">Days</string>
     <string name="months">Months</string>
     <string name="year">Year</string>
     <string name="month">Month</string>
 
-    <string name="currentMonth">Current Month: </string>
+    <string name="currentMonth">"Current month: "</string>
     <string name="currentYear">Current Year: </string>
 
     <string name="selectLanguage">Language</string>
@@ -68,6 +72,12 @@
     <string name="october">October</string>
     <string name="november">November</string>
     <string name="december">December</string>
+
+    <string name="bodyShare">"Time is gold! Use Soldi app to manage your expenses in the simplest way :) Take a look at it and save your time: "</string>
+    <string name="subjectShare">Try this simple app to manage your expenses! </string>
+    <string name="shareUsing">Share Using</string>
+    <string name="share">Share</string>
+    <string name="shareTitle">Share with my friends</string>
 
 
 </resources>

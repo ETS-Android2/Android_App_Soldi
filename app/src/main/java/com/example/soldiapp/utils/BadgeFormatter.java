@@ -17,7 +17,9 @@ public class BadgeFormatter extends ValueFormatter {
      */
     @Override
     public String getFormattedValue(float value) {
-        return (int)value + "€";
+        if(value==0)
+            return "";
+        return value + "€";
     }
 
 }

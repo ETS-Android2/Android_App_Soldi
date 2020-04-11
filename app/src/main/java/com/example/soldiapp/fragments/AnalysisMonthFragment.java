@@ -22,6 +22,7 @@ import com.example.soldiapp.auxiliar.Expense_Payment;
 import com.example.soldiapp.auxiliar.Expense_Type;
 import com.example.soldiapp.auxiliar.MonthDate;
 import com.example.soldiapp.data_handling.ExpenseViewModel;
+import com.example.soldiapp.utils.MonthHandler;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -32,7 +33,6 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +52,8 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
     List<MonthDate> monthsRegisteredList = new ArrayList<>();
     List<Expense_Type> expensesTypeList = new ArrayList<>();
     List<Expense_Payment> expensesPaymentList = new ArrayList<>();
+
+    boolean firstCallSpinner = true;
 
     ExpenseViewModel expenseViewModel;
     Spinner spinnerMonth;
@@ -89,7 +91,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
             //Title line chart
             titleLineChart = getView().findViewById(R.id.titleLineChartMonth);
-            titleLineChart.setText(getString(R.string.currentMonth) + capitalize(numberMonthToText(m.getMonth())));
+            titleLineChart.setText(getString(R.string.currentMonth) +" "+ MonthHandler.capitalize(MonthHandler.numberMonthToText(m.getMonth())));
 
             //Fill line chart
             dayExpenses = expenseViewModel.getDayExpenses(m.getMonth(), m.getYear());
@@ -182,7 +184,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         for (int i = 1; i < 32; i++) {
             if (days < expenses.size()) {
                 if (i == expenses.get(days).getDay()) { //Add days in which there are expenses
-                    values.add(new Entry(i, (int) expenses.get(days).getExpense()));
+                    values.add(new Entry(i, (float) expenses.get(days).getExpense()));
                     days++;
                 } else {
                     if (i == 1 || i == 31)
@@ -230,10 +232,10 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
         ArrayList<PieEntry> yValues = new ArrayList<>();
 
-        expenses = adaptLanguage(expenses);
+        expenses = MonthHandler.adaptLanguage(getActivity(),expenses);
 
         for (Expense_Type expense : expenses) {
-            yValues.add(new PieEntry((int) expense.getExpense(), capitalize(expense.getExpenseType())));
+            yValues.add(new PieEntry((int) expense.getExpense(), MonthHandler.capitalize(expense.getExpenseType())));
         }
 
         PieDataSet dataSetExpenseType = new PieDataSet(yValues, "");
@@ -293,88 +295,36 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        String[] month_year = text.split(" - ");
+        if(!firstCallSpinner){
+            String text = parent.getItemAtPosition(position).toString();
+            String[] month_year = text.split(" - ");
 
-        int month = extractMonth(month_year[0]);
-        int year = Integer.parseInt(month_year[1]);
+            int month = MonthHandler.extractMonth(getActivity(),month_year[0]);
+            int year = Integer.parseInt(month_year[1]);
 
-        titleLineChart.setText(capitalize(text));
+            titleLineChart.setText(MonthHandler.capitalize(text));
 
-        dayExpenses = expenseViewModel.getDayExpenses(month, year);
-        fillLineChart(dayExpenses);
+            dayExpenses = expenseViewModel.getDayExpenses(month, year);
+            fillLineChart(dayExpenses);
 
-        totalText.setText(String.format("%.2f",totalExpense(dayExpenses)) + " " + getString(R.string.badge));
+            totalText.setText(String.format("%.2f",totalExpense(dayExpenses)) + " " + getString(R.string.badge));
 
-        expensesTypeList = expenseViewModel.getSumTypeExpenses(month, year);
-        fillExpenseTypeChart(expensesTypeList);
-        fillBreakdownTypeExpenses();
+            expensesTypeList = expenseViewModel.getSumTypeExpenses(month, year);
+            fillExpenseTypeChart(expensesTypeList);
+            fillBreakdownTypeExpenses();
 
-        expensesPaymentList = expenseViewModel.getSumPaymentExpenses(month, year);
-        fillExpensePaymentChart(expensesPaymentList);
-        fillBreakdownPayment();
+            expensesPaymentList = expenseViewModel.getSumPaymentExpenses(month, year);
+            fillExpensePaymentChart(expensesPaymentList);
+            fillBreakdownPayment();
+        }
+        firstCallSpinner=false;
+
 
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-    }
-
-    private String capitalize(String str){
-       return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
-    }
-
-    private int extractMonth(String s) {
-        s = capitalize(s);
-        if(s.equals(getString(R.string.january)))
-            return 1;
-        else if(s.equals(getString(R.string.february)))
-            return 2;
-        else if(s.equals(getString(R.string.march)))
-            return 3;
-        else if(s.equals(getString(R.string.april)))
-            return 4;
-        else if(s.equals(getString(R.string.may)))
-            return 5;
-        else if(s.equals(getString(R.string.june)))
-            return 6;
-        else if(s.equals(getString(R.string.july)))
-            return 7;
-        else if(s.equals(getString(R.string.august)))
-            return 8;
-        else if(s.equals(getString(R.string.september)))
-            return 9;
-        else if(s.equals(getString(R.string.october)))
-            return 10;
-        else if(s.equals(getString(R.string.november)))
-            return 11;
-        else
-            return 12;
-
-    }
-
-    public String numberMonthToText(int n){
-        return new DateFormatSymbols().getMonths()[n-1];
-    }
-
-    private List<Expense_Type> adaptLanguage(List<Expense_Type> expenses) {
-        for(Expense_Type expense : expenses){
-            if(expense.getExpenseType().equals("supermarket"))
-                expense.setExpenseType(getString(R.string.supermarket_type));
-            else if(expense.getExpenseType().equals("transport"))
-                expense.setExpenseType(getString(R.string.transport_type));
-            else if(expense.getExpenseType().equals("leisure"))
-                expense.setExpenseType(getString(R.string.leisure_type));
-            else if(expense.getExpenseType().equals("shopping"))
-                expense.setExpenseType(getString(R.string.shopping_type));
-            else if(expense.getExpenseType().equals("bills"))
-                expense.setExpenseType(getString(R.string.bills_type));
-            else
-                expense.setExpenseType(getString(R.string.other_type));
-
-        }
-        return expenses;
     }
 
 }

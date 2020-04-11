@@ -20,6 +20,7 @@ import com.example.soldiapp.auxiliar.Expense_Payment;
 import com.example.soldiapp.auxiliar.Expense_Type;
 import com.example.soldiapp.auxiliar.MonthExpense;
 import com.example.soldiapp.data_handling.ExpenseViewModel;
+import com.example.soldiapp.utils.MonthHandler;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.Entry;
@@ -50,6 +51,8 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
 
     List<Expense_Payment> expensesPaymentList = new ArrayList<>();
     List<Expense_Type> expensesTypeList = new ArrayList<>();
+
+    boolean firstCallSpinner = true;
 
     ExpenseViewModel expenseViewModel;
 
@@ -85,7 +88,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
 
             //Title line chart
             titleLineChart = getView().findViewById(R.id.titleLineChartYear);
-            titleLineChart.setText(getString(R.string.currentYear) + year);
+            titleLineChart.setText(getString(R.string.currentYear) +" " + year);
 
             //Fill line chart
             monthExpenses = expenseViewModel.getMonthExpenses(year);
@@ -187,7 +190,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
         for (int i = 1; i < 13; i++) {
             if (months < expenses.size()) {
                 if (i == expenses.get(months).getMonth()) { //Add months in which there are expenses
-                    values.add(new Entry(i, (int) expenses.get(months).getExpense()));
+                    values.add(new Entry(i, (float) expenses.get(months).getExpense()));
                     months++;
                 } else {
                     if (i == 1 || i == 12)
@@ -226,12 +229,12 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
         expenseTypeChart.setCenterText(getString(R.string.typeChartTitle));
         expenseTypeChart.setCenterTextSize(20);
 
-        expenses = adaptLanguage(expenses);
+        expenses = MonthHandler.adaptLanguage(getActivity(),expenses);
 
         ArrayList<PieEntry> yValues = new ArrayList<>();
 
         for (Expense_Type expense : expenses) {
-            yValues.add(new PieEntry((int) expense.getExpense(), capitalize(expense.getExpenseType())));
+            yValues.add(new PieEntry((float) expense.getExpense(), MonthHandler.capitalize(expense.getExpenseType())));
         }
 
         PieDataSet dataSetExpenseType = new PieDataSet(yValues, "");
@@ -268,7 +271,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
             String payment = getString(R.string.card_payment);
             if (expense.isPaymentWithCash())
                 payment = getString(R.string.cash_payment);
-            yValues.add(new PieEntry((int) expense.getExpense(), payment));
+            yValues.add(new PieEntry((float) expense.getExpense(), payment));
         }
 
         PieDataSet dataSetExpenseType = new PieDataSet(yValues, "");
@@ -293,51 +296,33 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
 
-        int year = Integer.parseInt(text);
+        if(!firstCallSpinner){ //In order not to be executed when initializing spinner
+            String text = parent.getItemAtPosition(position).toString();
 
-        titleLineChart.setText(String.valueOf(year));
+            int year = Integer.parseInt(text);
 
-        monthExpenses = expenseViewModel.getMonthExpenses(year);
-        fillLineChart(monthExpenses);
+            titleLineChart.setText(String.valueOf(year));
 
-        totalText.setText(String.format("%.2f",totalExpense(monthExpenses)) + " " +  getString(R.string.badge));
+            monthExpenses = expenseViewModel.getMonthExpenses(year);
+            fillLineChart(monthExpenses);
 
-        expensesTypeList = expenseViewModel.getSumTypeExpenses(year);
-        fillExpenseTypeChart(expensesTypeList);
-        fillBreakdownTypeExpenses();
+            totalText.setText(String.format("%.2f",totalExpense(monthExpenses)) + " " +  getString(R.string.badge));
 
-        expensesPaymentList = expenseViewModel.getSumPaymentExpenses(year);
-        fillExpensePaymentChart(expensesPaymentList);
-        fillBreakdownPayment();
+            expensesTypeList = expenseViewModel.getSumTypeExpenses(year);
+            fillExpenseTypeChart(expensesTypeList);
+            fillBreakdownTypeExpenses();
+
+            expensesPaymentList = expenseViewModel.getSumPaymentExpenses(year);
+            fillExpensePaymentChart(expensesPaymentList);
+            fillBreakdownPayment();
+        }
+        firstCallSpinner=false;
+
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 
-    private String capitalize(String str){
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
-    }
-
-    private List<Expense_Type> adaptLanguage(List<Expense_Type> expenses) {
-        for(Expense_Type expense : expenses){
-            if(expense.getExpenseType().equals("supermarket"))
-                expense.setExpenseType(getString(R.string.supermarket_type));
-            else if(expense.getExpenseType().equals("transport"))
-                expense.setExpenseType(getString(R.string.transport_type));
-            else if(expense.getExpenseType().equals("leisure"))
-                expense.setExpenseType(getString(R.string.leisure_type));
-            else if(expense.getExpenseType().equals("shopping"))
-                expense.setExpenseType(getString(R.string.shopping_type));
-            else if(expense.getExpenseType().equals("bills"))
-                expense.setExpenseType(getString(R.string.bills_type));
-            else
-                expense.setExpenseType(getString(R.string.other_type));
-
-        }
-        return expenses;
-    }
 }
