@@ -4,6 +4,19 @@
     <color name="colorPrimaryDark">#97B3D0FF</color>
     <color name="colorAccent">#03DAC5</color>
 
+    <color name="frag_tool">#5eaeae</color>
+    <color name="frag_home">#edfffa</color>
+    <color name="frag_type">#edfffa</color>
+    <color name="frag_paym">#edfffa</color>
+    <color name="frag_conf">#edfffa</color>
+    <color name="nav_frag">#5eaeae</color>
+
+    <color name="titles_analysis">#5eaeae</color>
+
+    <color name="frag_analysis">#edfffa</color>
+    <color name="frag_settings">#edfffa</color>
+    <color name="frag_analysis_tabs">#edfffa</color>
+
     <color name ="color0">#26f43a</color>
     <color name ="color1">#26f4d2</color>
     <color name ="color2">#2697f4</color>

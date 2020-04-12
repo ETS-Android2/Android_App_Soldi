@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setContentView(R.layout.activity_main);
 
-
         //Navigation
         setupNavigation();
 
@@ -59,15 +58,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
-        //TODO Fix this dirty trick to have it working (allows navigation drawer after coming back from expense type)
-        if(getToolbar().getTitle().length()==("HomeFragment".length())){
-            showBackButton(false);
-        }
+
     }
 
     //Setting up navigation
     private void setupNavigation() {
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -100,19 +95,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 drawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Doesn't have to be onBackPressed
                         onBackPressed();
                     }
                 });
-
                 toolBarNavigationListenerIsRegistered = true;
             }
 
         } else {
             //Regain the power of swipe for the drawer.
             drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-            // Remove back button
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             // Show hamburger
             drawerToggle.setDrawerIndicatorEnabled(true);
             // Remove the/any drawer toggle listener
@@ -151,7 +142,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        String toolbarTitle = "";
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
@@ -189,18 +179,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(Intent.createChooser(sharingIntent,getString(R.string.shareUsing)));
 
         Toast.makeText(this, getString(R.string.share), Toast.LENGTH_SHORT).show();
-    }
-
-    public DrawerLayout getDrawer() {
-        return drawer;
-    }
-
-    public ActionBarDrawerToggle getDrawerToggle() {
-        return drawerToggle;
-    }
-
-    public Toolbar getToolbar() {
-        return toolbar;
     }
 
     public void languageCheck(){

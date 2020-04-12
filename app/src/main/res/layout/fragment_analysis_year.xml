@@ -34,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:text="@string/yearTitle"
+                    android:textColor="@color/titles_analysis"
                     android:textSize="30sp" />
 
                 <Spinner
@@ -42,8 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="30dp"
-                    android:layout_marginBottom="30dp"
-                    android:background="@android:drawable/btn_dropdown"/>
+                    android:layout_marginBottom="30dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -68,7 +68,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|center_vertical"
                     android:text="0€"
-                    android:textSize="32sp" />
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -86,27 +87,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/titleLineChartYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:gravity="center_horizontal"
                     android:text="@string/year"
-                    android:textSize="30dp"
-                    android:layout_marginTop="10dp"/>
+                    android:textColor="@color/titles_analysis"
+                    android:textSize="30dp" />
+
                 <com.github.mikephil.charting.charts.LineChart
                     android:id="@+id/lineYearChart"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
                     android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:layout_marginBottom="10dp" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:gravity="center_horizontal"
                     android:text="@string/months"
-                    android:textSize="30dp"
-                    android:layout_marginBottom="10dp"/>
+                    android:textSize="24dp" />
             </LinearLayout>
 
         </androidx.cardview.widget.CardView>
@@ -124,6 +129,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/titleTypeChartYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/typeChartTitle"
+                    android:textSize="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/titles_analysis"/>
+
 
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/expensesYearTypeChart"
@@ -140,6 +157,8 @@
                         android:layout_gravity="center_vertical|center_horizontal"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="2dp"
                         android:columnCount="2"
                         android:rowCount="1">
 
@@ -148,7 +167,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical|center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="10dp"
                             android:layout_marginBottom="10dp"
                             android:columnCount="2"
                             android:rowCount="1">
@@ -161,20 +180,20 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/supermarket" />
 
                                 <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/transport" />
 
                                 <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/leisure" />
 
@@ -190,27 +209,30 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_marginTop="30dp"
+                                    android:layout_marginTop="25dp"
                                     android:text="0€"
-                                    android:textSize="20dp" />
+                                    android:textSize="18dp"
+                                    android:maxLength="10"/>
 
                                 <TextView
                                     android:id="@+id/YearExpenseTransport"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_marginTop="40dp"
+                                    android:layout_marginTop="35dp"
                                     android:text="0€"
-                                    android:textSize="20dp" />
+                                    android:textSize="18dp"
+                                    android:maxLength="10"/>
 
                                 <TextView
                                     android:id="@+id/YearExpenseLeisure"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_marginTop="40dp"
+                                    android:layout_marginTop="35dp"
                                     android:text="0€"
-                                    android:textSize="20dp" />
+                                    android:textSize="18dp"
+                                    android:maxLength="10"/>
                             </LinearLayout>
 
                         </GridLayout>
@@ -219,7 +241,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical|center_horizontal"
-                            android:layout_marginLeft="20dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:columnCount="2"
@@ -233,20 +254,20 @@
                                 android:orientation="vertical">
 
                                 <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/shopping" />
 
                                 <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/bills" />
 
                                 <ImageView
-                                    android:layout_width="60dp"
-                                    android:layout_height="60dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/other" />
 
@@ -263,27 +284,30 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_marginTop="30dp"
+                                    android:layout_marginTop="25dp"
                                     android:text="0€"
-                                    android:textSize="20dp" />
+                                    android:textSize="18dp"
+                                    android:maxLength="10"/>
 
                                 <TextView
                                     android:id="@+id/YearExpenseBills"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_marginTop="40dp"
+                                    android:layout_marginTop="35dp"
                                     android:text="0€"
-                                    android:textSize="20dp" />
+                                    android:textSize="18dp"
+                                    android:maxLength="10"/>
 
                                 <TextView
                                     android:id="@+id/YearExpenseOther"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center_horizontal|center_vertical"
-                                    android:layout_marginTop="40dp"
+                                    android:layout_marginTop="35dp"
                                     android:text="0€"
-                                    android:textSize="20dp" />
+                                    android:textSize="18dp"
+                                    android:maxLength="10"/>
                             </LinearLayout>
 
                         </GridLayout>
@@ -308,23 +332,36 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/titlePaymentChartYear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/paymentChartTitle"
+                    android:textSize="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@color/titles_analysis"/>
+
+
                 <com.github.mikephil.charting.charts.PieChart
                     android:id="@+id/expensesYearPaymentChart"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:layout_marginTop="8dp" />
+                    android:layout_height="500dp" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp">
+                   >
 
                     <GridLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|center_horizontal"
-
+                        android:layout_marginTop="30dp"
                         android:layout_marginBottom="20dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:columnCount="2"
                         android:rowCount="1">
 
@@ -332,13 +369,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_marginRight="30dp"
-                            android:orientation="horizontal">
+                            android:layout_marginRight="10dp"
+                            android:orientation="horizontal"
+                           >
 
                             <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginRight="20dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginRight="10dp"
                                 android:src="@drawable/cash" />
 
                             <TextView
@@ -346,22 +384,23 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="0€"
-                                android:textSize="20dp" />
+                                android:textSize="18dp"
+                                android:maxLength="10"/>
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal|center_vertical"
-                            android:layout_marginLeft="30dp"
+                            android:layout_marginLeft="5dp"
                             android:orientation="horizontal">
 
                             <ImageView
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_marginRight="20dp"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginRight="10dp"
                                 android:src="@drawable/card" />
 
                             <TextView
@@ -369,9 +408,10 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center_horizontal|center_vertical"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="10dp"
                                 android:text="0€"
-                                android:textSize="20dp" />
+                                android:textSize="18dp"
+                                android:maxLength="10"/>
                         </LinearLayout>
                     </GridLayout>
                 </androidx.cardview.widget.CardView>

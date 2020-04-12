@@ -46,7 +46,7 @@
     <string name="deleteButton">Cancellare</string>
     <string name="deleteButtonAll">Cancellare Tutto</string>
 
-    <string name="deleteConfirmationTitle">Cancellare le spese da </string>
+    <string name="deleteConfirmationTitle">Cancellare i dati da</string>
     <string name="deleteConfirmationText">Sei sicuro di volerli eliminare? </string>
     <string name="yes">Si</string>
     <string name="no">Non</string>
@@ -67,7 +67,7 @@
     <string name="december">Dicembre</string>
     <string name="cancel_expense">Spese annullate</string>
     <string name="add_expense">Spese aggiunte :)</string>
-    <string name="bodyShare">Il tempo è denaro! Usa l\'app Soldi per gestire le tue spese nel modo più semplice :) Dai un\'occhiata e risparmia tempo:</string>
+    <string name="bodyShare">Il tempo è denaro! Usa l\'app Soldi per gestire le tue spese nel modo più semplice :) Dai un\'occhiata e risparmia tempo: https://www.instagram.com/guillermoarce07/</string>
     <string name="subjectShare">Prova questa semplice app per gestire le tue spese!</string>
     <string name="shareUsing">Condividi usando</string>
     <string name="share">Condividere</string>
@@ -75,6 +75,7 @@
     <string name="briefDescription">Il tempo è denaro!</string>
     <string name="addingExpense">Aggiungendo spese</string>
     <string name="confirmExpense">Conferma spese</string>
+    <string name="or">o</string>
 
 
 </resources>

@@ -19,6 +19,16 @@ public class BadgeFormatter extends ValueFormatter {
     public String getFormattedValue(float value) {
         if(value==0)
             return "";
+
+        String number = String.valueOf(value);
+        String[] parts = number.split("\\.");
+        if(parts.length>1)
+            if(parts[1].equals("00") || parts[1].equals("0")){
+                int result = (int) value;
+                return result + "€";
+            }
+
+
         return value + "€";
     }
 

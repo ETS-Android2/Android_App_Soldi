@@ -46,7 +46,7 @@
     <string name="deleteButton">Eliminar</string>
     <string name="deleteButtonAll">Eliminar Todo</string>
 
-    <string name="deleteConfirmationTitle">"Eliminar los gastos de "</string>
+    <string name="deleteConfirmationTitle">Eliminar los datos de</string>
     <string name="deleteConfirmationText">¿Estás seguro de querer eliminarlos? </string>
     <string name="yes">Si</string>
     <string name="no">No</string>
@@ -67,7 +67,7 @@
     <string name="december">Diciembre</string>
     <string name="cancel_expense">Gasto cancelado</string>
     <string name="add_expense">Gasto añadido :)</string>
-    <string name="bodyShare">¡El tiempo es oro! Usa la aplicación Soldi para gestionar tus gastos de la manera más sencilla :) Échale un vistazo y ahorra tu tiempo:</string>
+    <string name="bodyShare">¡El tiempo es oro! Usa la aplicación Soldi para gestionar tus gastos de la manera más sencilla :) Échale un vistazo y ahorra tu tiempo: https://www.instagram.com/guillermoarce07/</string>
     <string name="subjectShare">¡Prueba esta sencilla aplicación para administrar tus gastos!</string>
     <string name="shareUsing">Compartir Usando</string>
     <string name="share">Compartir</string>
@@ -75,6 +75,7 @@
     <string name="briefDescription">¡El tiempo es oro!</string>
     <string name="addingExpense">Añadiendo gasto</string>
     <string name="confirmExpense">Confirma gasto</string>
+    <string name="or">o</string>
 
 
 </resources>

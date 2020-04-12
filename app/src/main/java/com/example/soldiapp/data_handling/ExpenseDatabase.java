@@ -23,7 +23,6 @@ public abstract class ExpenseDatabase extends RoomDatabase {
             instance = Room.databaseBuilder(context.getApplicationContext(),
                     ExpenseDatabase.class, "expense_database")
                     .fallbackToDestructiveMigration()
-                    .addCallback(roomCallback)
                     .build();
         }
         return instance;

@@ -33,6 +33,7 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -137,17 +138,17 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
         for (Expense_Type exp : expensesTypeList) {
             if (exp.getExpenseType().equals(getString(R.string.supermarket_type)))
-                supermarketText.setText(exp.getExpense() + getString(R.string.badge));
+                supermarketText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.transport_type)))
-                transportText.setText(exp.getExpense() + getString(R.string.badge));
+                transportText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.leisure_type)))
-                leisureText.setText(exp.getExpense() + getString(R.string.badge));
+                leisureText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.shopping_type)))
-                shoppingText.setText(exp.getExpense() + getString(R.string.badge));
+                shoppingText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.bills_type)))
-                billsText.setText(exp.getExpense() + getString(R.string.badge));
+                billsText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.other_type)))
-                otherText.setText(exp.getExpense() + getString(R.string.badge));
+                otherText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
         }
     }
 
@@ -160,9 +161,9 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
         for (Expense_Payment exp : expensesPaymentList) {
             if (exp.isPaymentWithCash())
-                cashText.setText(exp.getExpense() + getString(R.string.badge));
+                cashText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else
-                cardText.setText(exp.getExpense() + getString(R.string.badge));
+                cardText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
         }
     }
 
@@ -199,7 +200,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
 
         //Dataset
         LineDataSet dataSet = new LineDataSet(values, "");
-        dataSet = ChartAuxiliar.setLineChartDataset(dataSet);
+        dataSet = ChartAuxiliar.setLineChartDataset(dataSet,getActivity());
 
         //Add datasets
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -230,6 +231,8 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         expenseTypeChart.setCenterText(getString(R.string.typeChartTitle));
         expenseTypeChart.setCenterTextSize(20);
 
+        DecimalFormat df = new DecimalFormat("0.00");
+
         ArrayList<PieEntry> yValues = new ArrayList<>();
 
         expenses = MonthHandler.adaptLanguage(getActivity(),expenses);
@@ -241,7 +244,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         PieDataSet dataSetExpenseType = new PieDataSet(yValues, "");
 
         //Config dataset
-        dataSetExpenseType = ChartAuxiliar.setPieDataSetConf(dataSetExpenseType);
+        dataSetExpenseType = ChartAuxiliar.setPieDataSetConfType(dataSetExpenseType);
 
         PieData data = new PieData(dataSetExpenseType);
 
@@ -277,7 +280,7 @@ public class AnalysisMonthFragment extends Fragment implements AdapterView.OnIte
         PieDataSet dataSetExpenseType = new PieDataSet(yValues, "");
 
         //Config dataset
-        dataSetExpenseType = ChartAuxiliar.setPieDataSetConf(dataSetExpenseType);
+        dataSetExpenseType = ChartAuxiliar.setPieDataSetConfPaym(dataSetExpenseType);
 
         PieData data = new PieData(dataSetExpenseType);
 

@@ -32,6 +32,7 @@ public class II_PaymentMethodFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_ii_payment_method, container, false);
     }
@@ -41,9 +42,6 @@ public class II_PaymentMethodFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final NavController navController = Navigation.findNavController(view);
-
-        //Set toolbar title
-        ((MainActivity) getActivity()).getToolbar().setTitle(getString(R.string.addingExpense));
 
         //Add listeners to buttons
         ArrayList<ImageView> paymentButtons = new ArrayList<ImageView>();

@@ -34,7 +34,7 @@ public class III_ConfirmExpenseFragment extends Fragment {
     ExpenseViewModel expenseViewModel;
 
     public III_ConfirmExpenseFragment() {
-        //        // Required empty public constructor
+        // Required empty public constructor
     }
 
     @Override
@@ -55,9 +55,6 @@ public class III_ConfirmExpenseFragment extends Fragment {
 
         final NavController navController = Navigation.findNavController(view);
 
-        //Set toolbar title
-        ((MainActivity) getActivity()).getToolbar().setTitle(getString(R.string.confirmExpense));
-
         //Add listeners to the buttons
         ArrayList<ImageView> confirmButtons = new ArrayList<ImageView>();
 
@@ -73,13 +70,11 @@ public class III_ConfirmExpenseFragment extends Fragment {
                         saveExpense();
 
                         navController.navigate(R.id.action_iii_ConfirmExpenseFragment_to_homeFragment);
-                        ((MainActivity) getActivity()).showBackButton(false);
                     } else {
 
                         Toast.makeText(getActivity(), getString(R.string.cancel_expense), Toast.LENGTH_SHORT).show();
 
                         navController.navigate(R.id.action_iii_ConfirmExpenseFragment_to_homeFragment);
-                        ((MainActivity) getActivity()).showBackButton(false);
                     }
 
                 }
@@ -88,7 +83,6 @@ public class III_ConfirmExpenseFragment extends Fragment {
 
     }
 
-    //TODO Improve mechanism of this method (dynamic resource allocating instead of check each possible solution)
     private void showExpenseSummary(View view) {
         TextView expenseAmount = (TextView) view.findViewById(R.id.textConfirmMoney);
         Double money = viewModel.getExpense().getValue();

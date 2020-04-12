@@ -19,6 +19,8 @@
     <string name="payment_method_title">How?</string>
     <string name="confirm_expense_title">Is it okay?</string>
 
+    <string name="or">or</string>
+
     <string name="supermarket_type">Supermarket</string>
     <string name="transport_type">Transport</string>
     <string name="leisure_type">Leisure</string>
@@ -53,7 +55,7 @@
     <string name="deleteButton">Delete</string>
     <string name="deleteButtonAll">Delete All</string>
 
-    <string name="deleteConfirmationTitle">Delete expenses from </string>
+    <string name="deleteConfirmationTitle">Delete data from</string>
     <string name="deleteConfirmationText">Are you sure you want to delete them? </string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -73,7 +75,7 @@
     <string name="november">November</string>
     <string name="december">December</string>
 
-    <string name="bodyShare">"Time is gold! Use Soldi app to manage your expenses in the simplest way :) Take a look at it and save your time: "</string>
+    <string name="bodyShare">Time is gold! Use Soldi app to manage your expenses in the simplest way :) Take a look at it and save your time:  https://www.instagram.com/guillermoarce07/</string>
     <string name="subjectShare">Try this simple app to manage your expenses! </string>
     <string name="shareUsing">Share Using</string>
     <string name="share">Share</string>

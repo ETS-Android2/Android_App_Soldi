@@ -36,8 +36,10 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
         inputExpense = v.findViewById(R.id.inputExpense);
         viewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+
         return v;
 
     }
@@ -47,13 +49,13 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
-        ((MainActivity) getActivity()).getToolbar().setTitle(getString(R.string.app_name)); //When going back from other fragment it is needed
+        ((MainActivity) getActivity()).showBackButton(false);
 
         ImageView button = view.findViewById(R.id.startExpenseButton);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (checkInputExpense()) {
+                if (checkInputExpense(inputExpense.getText().toString())) {
                     saveExpense();
                     navController.navigate(R.id.action_homeFragment_to_i_ExpenseTypeFragment);
                     ((MainActivity) getActivity()).showBackButton(true);
@@ -65,11 +67,27 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private boolean checkInputExpense() {
+    public boolean checkInputExpense(String input) {
         try {
-            //TODO validate all possible inputs
-            double expense = Double.parseDouble(inputExpense.getText().toString());
-            return true;
+            double expense = Double.parseDouble(input);
+            if (expense >= 0.01 && expense < 1000000) {
+                String number = String.valueOf(expense);
+                String[] checkParts = number.split("\\.");
+
+                String integerPart = checkParts[0];
+                String decimalPart = checkParts[1];
+
+                //Not allowing bigger numbers than 999 999
+                if (integerPart.length() > 6 || integerPart.length() < 1)
+                    return false;
+
+                if (checkParts.length > 1)
+                    if (decimalPart.length() > 2 || decimalPart.length() == 0)
+                        return false;
+
+                return true;
+            }
+            return false;
         } catch (NumberFormatException e) {
             return false;
         }
@@ -92,5 +110,6 @@ public class HomeFragment extends Fragment {
         expense = parsedNumber.doubleValue();
         viewModel.setExpense(expense);
     }
+
 
 }

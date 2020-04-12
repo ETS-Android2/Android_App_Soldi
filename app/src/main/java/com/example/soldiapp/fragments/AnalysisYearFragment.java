@@ -122,9 +122,9 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
 
         for (Expense_Payment exp : expensesPaymentList) {
             if (exp.isPaymentWithCash())
-                cashText.setText(exp.getExpense() + getString(R.string.badge));
+                cashText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else
-                cardText.setText(exp.getExpense() + getString(R.string.badge));
+                cardText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
         }
     }
 
@@ -149,17 +149,17 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
 
         for (Expense_Type exp : expensesTypeList) {
             if (exp.getExpenseType().equals(getString(R.string.supermarket_type)))
-                supermarketText.setText(exp.getExpense() + getString(R.string.badge));
+                supermarketText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.transport_type)))
-                transportText.setText(exp.getExpense() + getString(R.string.badge));
+                transportText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.leisure_type)))
-                leisureText.setText(exp.getExpense() + getString(R.string.badge));
+                leisureText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.shopping_type)))
-                shoppingText.setText(exp.getExpense() + getString(R.string.badge));
+                shoppingText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.bills_type)))
-                billsText.setText(exp.getExpense() + getString(R.string.badge));
+                billsText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
             else if (exp.getExpenseType().equals(getString(R.string.other_type)))
-                otherText.setText(exp.getExpense() + getString(R.string.badge));
+                otherText.setText(String.format("%.2f",exp.getExpense()) + getString(R.string.badge));
         }
     }
 
@@ -205,7 +205,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
 
         LineDataSet dataSet = new LineDataSet(values, "");
 
-        dataSet = ChartAuxiliar.setLineChartDataset(dataSet);
+        dataSet = ChartAuxiliar.setLineChartDataset(dataSet,getActivity());
 
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(dataSet);
@@ -240,7 +240,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
         PieDataSet dataSetExpenseType = new PieDataSet(yValues, "");
 
         //Config dataset
-        dataSetExpenseType = ChartAuxiliar.setPieDataSetConf(dataSetExpenseType);
+        dataSetExpenseType = ChartAuxiliar.setPieDataSetConfType(dataSetExpenseType);
 
         PieData data = new PieData(dataSetExpenseType);
 
@@ -277,7 +277,7 @@ public class AnalysisYearFragment extends Fragment implements AdapterView.OnItem
         PieDataSet dataSetExpenseType = new PieDataSet(yValues, "");
 
         //Config dataset
-        dataSetExpenseType = ChartAuxiliar.setPieDataSetConf(dataSetExpenseType);
+        dataSetExpenseType = ChartAuxiliar.setPieDataSetConfPaym(dataSetExpenseType);
 
         PieData data = new PieData(dataSetExpenseType);
 

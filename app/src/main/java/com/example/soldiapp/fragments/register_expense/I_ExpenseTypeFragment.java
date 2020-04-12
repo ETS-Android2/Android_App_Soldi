@@ -33,6 +33,7 @@ public class I_ExpenseTypeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         viewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+
         return inflater.inflate(R.layout.fragment_i_expense_type, container, false);
     }
 
@@ -41,9 +42,6 @@ public class I_ExpenseTypeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         final NavController navController = Navigation.findNavController(view);
-
-        //Change toolbar title
-        ((MainActivity)getActivity()).getToolbar().setTitle(getString(R.string.addingExpense));
 
         //Add buttons listeners
         ArrayList<ImageView> typeButtons = new ArrayList<ImageView>();
