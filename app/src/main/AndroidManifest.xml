@@ -9,6 +9,7 @@
         android:roundIcon="@drawable/total"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:screenOrientation="portrait"
         >
         <activity android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">

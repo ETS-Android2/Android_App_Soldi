@@ -76,6 +76,7 @@
     <string name="addingExpense">Aggiungendo spese</string>
     <string name="confirmExpense">Conferma spese</string>
     <string name="or">o</string>
+    <string name="backButton">Torna indietro</string>
 
 
 </resources>

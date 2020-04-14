@@ -100,7 +100,7 @@ public class SettingsFragment extends Fragment {
         });
     }
 
-    private void changeLanguage(String language) {
+    public void changeLanguage(String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
         Configuration configuration = new Configuration();

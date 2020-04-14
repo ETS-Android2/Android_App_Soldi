@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">Soldi</string>
     <string name="home">Inicio</string>
-    <string name="analysis">Analisis</string>
+    <string name="analysis">Análisis</string>
     <string name="settings">Ajustes</string>
     <string name="about">Acerca De</string>
     <string name="exit">Salir</string>
 
     //Accessibility for blind people
-    <string name="navigation_drawer_open">Abrir cajón de navegación</string>
+    <string name="navigation_drawer_open">Abrir panel de navegación</string>
     <string name="navigation_drawer_close">Cerrar cajón de navegación</string>
 
     <string name="quantity_expense_title">¿Cuánto?</string>
@@ -76,6 +76,7 @@
     <string name="addingExpense">Añadiendo gasto</string>
     <string name="confirmExpense">Confirma gasto</string>
     <string name="or">o</string>
+    <string name="backButton">Desplazarse hacia arriba</string>
 
 
 </resources>

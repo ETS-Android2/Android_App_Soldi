@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,8 +70,14 @@ public class III_ConfirmExpenseFragment extends Fragment {
 
                         saveExpense();
 
+                        EditText input = (EditText) getActivity().findViewById(R.id.inputExpense);
+                        input.setText("");
+
                         navController.navigate(R.id.action_iii_ConfirmExpenseFragment_to_homeFragment);
                     } else {
+
+                        EditText input = (EditText) getActivity().findViewById(R.id.inputExpense);
+                        input.setText("");
 
                         Toast.makeText(getActivity(), getString(R.string.cancel_expense), Toast.LENGTH_SHORT).show();
 

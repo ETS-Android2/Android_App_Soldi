@@ -17,11 +17,13 @@ import androidx.navigation.Navigation;
 import com.example.soldiapp.fragments.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.android.controller.ActivityController;
 import org.robolectric.annotation.Config;
 import org.robolectric.shadow.api.Shadow;
@@ -53,11 +55,11 @@ public class ActivityTest {
     public void setUp() {
 
         activityController = Robolectric.buildActivity(MainActivity.class)
-                .create()
-                .start()
-                .resume()
-        ;
+                .create().start().resume();
+
         activity = activityController.get();
+
+
     }
 
     @Test
@@ -106,12 +108,6 @@ public class ActivityTest {
 
         NavController navController = Navigation.findNavController(activity, R.id.nav_host_fragment);
         assertNotNull(navController);
-
-    }
-
-    @Test
-    public void testNavigation() {
-
     }
 
     @Test
@@ -163,10 +159,42 @@ public class ActivityTest {
         assertEquals(activity.getSupportActionBar().getTitle(), activity.getString(R.string.settings));
         */
 
-        activity.onNavigationItemSelected(menu.getItem(3));
+        activity.onNavigationItemSelected(menu.getItem(3)); //Fragment is not changed, just the share option is displayed
 
-        assertEquals(activity.getSupportActionBar().getTitle(), activity.getString(R.string.settings));
+        assertEquals(activity.getSupportActionBar().getTitle(), activity.getString(R.string.analysis));
+
+
 
     }
 
+    @Test
+    public void createAndDestroyActivity() {
+
+        assertEquals(activity.getSupportActionBar().getTitle(), activity.getString(R.string.app_name));
+
+        // Destroy the original activity
+        activityController
+                .pause()
+                .stop()
+                .destroy();
+
+        // Bring up a new activity
+        activityController = Robolectric.buildActivity(MainActivity.class)
+                .create()
+                .start()
+                .resume();
+        activity = activityController.get();
+
+
+        assertNotNull(activity);
+        assertEquals(activity.getSupportActionBar().getTitle(), activity.getString(R.string.app_name));
+    }
+
+    @After
+    public void tearDown() {
+        activityController
+                .pause()
+                .stop()
+                .destroy();
+    }
 }

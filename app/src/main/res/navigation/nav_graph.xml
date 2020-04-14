@@ -35,7 +35,7 @@
         tools:layout="@layout/fragment_iii_confirm_expense"
         android:id="@+id/iii_ConfirmExpenseFragment"
         android:name="com.example.soldiapp.fragments.register_expense.III_ConfirmExpenseFragment"
-        android:label="@string/confirm_expense_title">
+        android:label="@string/confirmExpense">
         <action
             android:id="@+id/action_iii_ConfirmExpenseFragment_to_homeFragment"
             app:destination="@id/homeFragment"

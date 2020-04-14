@@ -29,19 +29,21 @@ import java.util.Locale;
 
 import static com.example.soldiapp.fragments.SettingsFragment.APP_PREFERENCES;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity  extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
     private ActionBarDrawerToggle drawerToggle;
     private Toolbar toolbar;
     private boolean toolBarNavigationListenerIsRegistered = false;
+    NavigationView navigationView;
+    NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        languageCheck();
-
         setContentView(R.layout.activity_main);
+
+        languageCheck();
 
         //Navigation
         setupNavigation();
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+        navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout);
 
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         getSupportActionBar().setTitle(getString(R.string.app_name));
 
         drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         //Class that handles the toggle on the navigation drawer and the "hamburger" icon turn.
         drawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -131,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void manageNavigationDrawerAndToolbar(Bundle savedInstanceState) {
 
-        NavigationView navigationView = setupNavigationDrawerAndToolbar();
+        navigationView = setupNavigationDrawerAndToolbar();
 
         if (savedInstanceState == null) { //If activity is really created for the first time.
             getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment, //Show home when creating activity
@@ -194,4 +196,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getResources().getDisplayMetrics());
 
     }
+
+/*    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        // Save UI state changes to the savedInstanceState.
+        // This bundle will be passed to onCreate if the process is
+        // killed and restarted.
+        String activeFragment = getSupportActionBar().getTitle().toString();
+        int menuItemIndex = 0;
+        if(activeFragment.equals(getString(R.string.analysis)))
+            menuItemIndex=1;
+        if(activeFragment.equals(getString(R.string.settings)))
+            menuItemIndex=2;
+        savedInstanceState.putInt("menuItemId",menuItemIndex);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        // Restore UI state from the savedInstanceState.
+        // This bundle has also been passed to onCreate.
+        Menu menu = navigationView.getMenu();
+        onNavigationItemSelected(menu.getItem((int)savedInstanceState.get("menuItemId")));
+
+    }*/
 }

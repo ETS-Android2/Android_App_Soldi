@@ -104,6 +104,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp" />
                 <TextView
+                    android:id="@+id/xAxisTitleMonth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
@@ -179,18 +180,21 @@
                                 android:orientation="vertical">
 
                                 <ImageView
+                                    android:id="@+id/supermarketMonthLegend"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/supermarket" />
 
                                 <ImageView
+                                    android:id="@+id/transportMonthLegend"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/transport" />
 
                                 <ImageView
+                                    android:id="@+id/leisureMonthLegend"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
@@ -253,18 +257,21 @@
                                 android:orientation="vertical">
 
                                 <ImageView
+                                    android:id="@+id/shoppingMonthLegend"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/shopping" />
 
                                 <ImageView
+                                    android:id="@+id/billsMonthLegend"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
                                     android:src="@drawable/bills" />
 
                                 <ImageView
+                                    android:id="@+id/otherMonthLegend"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_marginTop="10dp"
@@ -372,6 +379,7 @@
                             android:orientation="horizontal">
 
                             <ImageView
+                                android:id="@+id/cashMonthLegend"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_marginRight="10dp"
@@ -396,6 +404,7 @@
                             android:orientation="horizontal">
 
                             <ImageView
+                                android:id="@+id/cardMonthLegend"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:layout_marginRight="10dp"
