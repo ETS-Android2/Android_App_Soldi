@@ -12,6 +12,7 @@
         <action
             android:id="@+id/action_homeFragment_to_i_ExpenseTypeFragment"
             app:destination="@id/i_ExpenseTypeFragment" />
+
     </fragment>
     <fragment
         tools:layout="@layout/fragment_i_expense_type"

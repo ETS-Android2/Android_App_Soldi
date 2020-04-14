@@ -50,7 +50,7 @@
     <string name="month">Month</string>
 
     <string name="currentMonth">"Current month: "</string>
-    <string name="currentYear">Current Year: </string>
+    <string name="currentYear">Current year: </string>
 
     <string name="selectLanguage">Language</string>
     <string name="deleteData">Delete expenses</string>

@@ -13,6 +13,7 @@ import androidx.test.runner.AndroidJUnit4;
 
 import com.example.soldiapp.MainActivity;
 import com.example.soldiapp.R;
+import com.example.soldiapp.data_handling.ExpenseRepository;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -48,6 +49,9 @@ public class FromHomeTest {
     @Before
     public void reachNavDrawer(){
         activity = mActivityTestRule.getActivity();
+
+        ExpenseRepository rep = new ExpenseRepository(activity.getApplication());
+        rep.deleteAll();
 
         ViewInteraction appCompatImageButton = onView(
                 allOf(withContentDescription(activity.getString(R.string.navigation_drawer_open)),

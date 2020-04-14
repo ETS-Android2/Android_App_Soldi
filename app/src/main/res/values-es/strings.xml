@@ -39,7 +39,7 @@
     <string name="month">Mes</string>
 
     <string name="currentMonth">"Mes actual: "</string>
-    <string name="currentYear">Año Actual: </string>
+    <string name="currentYear">Año actual: </string>
 
     <string name="selectLanguage">Idioma</string>
     <string name="deleteData">Eliminar gastos</string>

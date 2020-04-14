@@ -70,14 +70,14 @@ public class III_ConfirmExpenseFragment extends Fragment {
 
                         saveExpense();
 
-                        EditText input = (EditText) getActivity().findViewById(R.id.inputExpense);
+                       /* EditText input = (EditText) getActivity().findViewById(R.id.inputExpense);
                         input.setText("");
-
+*/
                         navController.navigate(R.id.action_iii_ConfirmExpenseFragment_to_homeFragment);
                     } else {
 
-                        EditText input = (EditText) getActivity().findViewById(R.id.inputExpense);
-                        input.setText("");
+                       /* EditText input = (EditText) getActivity().findViewById(R.id.inputExpense);
+                        input.setText("");*/
 
                         Toast.makeText(getActivity(), getString(R.string.cancel_expense), Toast.LENGTH_SHORT).show();
 

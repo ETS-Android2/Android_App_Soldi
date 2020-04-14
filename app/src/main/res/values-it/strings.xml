@@ -38,8 +38,8 @@
     <string name="year">Anno</string>
     <string name="month">Mese</string>
 
-    <string name="currentMonth">"Corrente mese: "</string>
-    <string name="currentYear">Corrente Anno: </string>
+    <string name="currentMonth">Mese corrente: </string>
+    <string name="currentYear">Anno corrente: </string>
 
     <string name="selectLanguage">Lingua</string>
     <string name="deleteData">Cancellare Spese</string>

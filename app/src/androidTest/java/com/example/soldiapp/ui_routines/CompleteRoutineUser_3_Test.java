@@ -57,15 +57,19 @@ public class CompleteRoutineUser_3_Test {
 
         ExpenseRepository repository = new ExpenseRepository(activity.getApplication());
 
-        //repository.insert(new Expense(price1,"supermarket",true));
-        //repository.insert(new Expense(price2,"other",true));
+        repository.deleteAll();
+
+        repository.insert(new Expense(price1,"supermarket",true,13,4,2020));
+        repository.insert(new Expense(price2,"other",true,13,4,2020));
 
         //Total expenses 50euros
     }
 
-    //TODO CORREGIR Y ACABAR :)
-
-
+    /**
+     * USER PROCESS (BEFORE- DELETE ALL EXPENSES AND INSERT 2 NEW ONES): NAV DRAWER ->
+     * -> ANALYSIS -> CHECK TOTAL MATCHES THE SUM OF THE EXPENSES -> NAV DRAWER -> SETTINGS -> DELETE ALL EXPENSES ->
+     * -> NAV DRAWER -> ANALYSIS -> CHECK TOTAL NOW IS 0
+     */
     @Test
     public void completeRoutineUser_3_Test() {
 
@@ -83,13 +87,12 @@ public class CompleteRoutineUser_3_Test {
 
         //Go to Analysis
         ViewInteraction navigationMenuItemView = onView(
-                allOf(withId(R.id.design_navigation_view),
+                allOf(withId(R.id.design_menu_item_text),withText(mActivityTestRule.getActivity().getString(R.string.analysis)),
                         isDisplayed()));
         navigationMenuItemView.perform(click());
 
 
         //---CHANGE FRAGMENT---
-
 
 
         //Check total expenses -> Should be sum -> 50 euros with current parameters
@@ -101,7 +104,8 @@ public class CompleteRoutineUser_3_Test {
                                         0),
                                 3),
                         isDisplayed()));
-        textView.check(matches(withText(String.valueOf(price1+price2))));
+        //textView.check(matches(withText(String.valueOf(price1+price2))));
+        textView.check(matches(withText(containsString(String.valueOf(price1+price2)))));
 
         //Open Nav drawer
         ViewInteraction appCompatImageButton2 = onView(

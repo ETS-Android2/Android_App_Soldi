@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
@@ -36,6 +37,9 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
     private boolean toolBarNavigationListenerIsRegistered = false;
     NavigationView navigationView;
     NavController navController;
+
+    //TODO LOCALE ADAPT
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -147,7 +151,7 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
         switch (menuItem.getItemId()) {
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
-                        new HomeFragment()).commit();
+                       new HomeFragment()).commit();
                 getSupportActionBar().setTitle(getString(R.string.app_name));
                 break;
             case R.id.nav_analysis:

@@ -50,6 +50,11 @@ public class CompleteRoutineUser_2_Test {
         activity = mActivityTestRule.getActivity();
     }
 
+    /**
+     * USER PROCESS: NAV DRAWER -> SETTINGS -> SPANISH LANGUAGE -> HOME (AUTOMATICALLY) -> CHECK CHANGE OF LANGUAGE ON TITLE ->
+     * -> NAV DRAWER -> SETTINGS -> ITALIAN LANGUAGE -> HOME (AUTOMATICALLY) -> CHECK CHANGE OF LANGUAGE ON TITLE ->
+     * -> NAV DRAWER -> SETTINGS -> ENGLISH LANGUAGE -> HOME (AUTOMATICALLY) -> CHECK CHANGE OF LANGUAGE ON TITLE
+     */
     @Test
     public void completeRoutineUser_2_Test() {
 
