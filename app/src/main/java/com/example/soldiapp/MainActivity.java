@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.os.ConfigurationCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -38,16 +39,13 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
     NavigationView navigationView;
     NavController navController;
 
-    //TODO LOCALE ADAPT
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
-
         languageCheck();
+
+        setContentView(R.layout.activity_main);
 
         //Navigation
         setupNavigation();
@@ -188,11 +186,25 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
     }
 
     public void languageCheck(){
+        Locale current = ConfigurationCompat.getLocales(getResources().getConfiguration()).get(0);
+        String languageDevice = current.getLanguage();
+
         SharedPreferences settings = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
 
-        String language = settings.getString("locale","en");
+        String languageApplication = settings.getString("locale", "en");
+        boolean changedLanguage = settings.getBoolean("changedLanguage",false);
 
-        Locale locale = new Locale(language);
+        String definitiveLanguage = "";
+        if(changedLanguage){
+            definitiveLanguage = languageApplication;
+        }else{
+            if(languageDevice.equals("en") ||languageDevice.equals("es") || languageDevice.equals("it"))
+                definitiveLanguage = languageDevice;
+            else
+                definitiveLanguage = "en"; //DEFAULT LANGUAGE if user doesn't have any of the others
+        }
+
+        Locale locale = new Locale(definitiveLanguage);
         Locale.setDefault(locale);
         Configuration configuration = new Configuration();
         configuration.locale=locale;
@@ -200,29 +212,4 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
                 getResources().getDisplayMetrics());
 
     }
-
-/*    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
-        // Save UI state changes to the savedInstanceState.
-        // This bundle will be passed to onCreate if the process is
-        // killed and restarted.
-        String activeFragment = getSupportActionBar().getTitle().toString();
-        int menuItemIndex = 0;
-        if(activeFragment.equals(getString(R.string.analysis)))
-            menuItemIndex=1;
-        if(activeFragment.equals(getString(R.string.settings)))
-            menuItemIndex=2;
-        savedInstanceState.putInt("menuItemId",menuItemIndex);
-    }
-
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        // Restore UI state from the savedInstanceState.
-        // This bundle has also been passed to onCreate.
-        Menu menu = navigationView.getMenu();
-        onNavigationItemSelected(menu.getItem((int)savedInstanceState.get("menuItemId")));
-
-    }*/
 }

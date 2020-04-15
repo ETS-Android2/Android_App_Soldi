@@ -47,7 +47,6 @@ import static org.hamcrest.Matchers.is;
 @RunWith(AndroidJUnit4.class)
 public class CompleteRoutineUser_1_Test {
 
-
     Activity activity;
     String expensePrice;
 

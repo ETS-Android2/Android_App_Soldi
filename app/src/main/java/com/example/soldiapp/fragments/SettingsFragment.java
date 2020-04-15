@@ -111,6 +111,7 @@ public class SettingsFragment extends Fragment {
         SharedPreferences settings = getActivity().getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
         SharedPreferences.Editor prefEditor = settings.edit();
         prefEditor.putString("locale",language);
+        prefEditor.putBoolean("changedLanguage",true);
         prefEditor.commit();
 
         //It is required to recreate the activity to reflect the change in UI.
