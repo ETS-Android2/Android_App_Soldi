@@ -94,7 +94,7 @@
 
     <ImageView
         android:id="@+id/otherTypeButton"
-        android:layout_width="75dp"
+        android:layout_width="70dp"
         android:layout_height="75dp"
         android:layout_marginTop="105dp"
         android:layout_marginEnd="30dp"
@@ -107,10 +107,10 @@
 
     <ImageView
         android:id="@+id/billsTypeButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="108dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="130dp"
         android:src="@drawable/bills"
@@ -121,8 +121,8 @@
 
     <ImageView
         android:id="@+id/shoppingTypeButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="105dp"
         android:layout_marginBottom="130dp"
@@ -133,9 +133,9 @@
 
     <ImageView
         android:id="@+id/leisureTypeButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="273dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="258dp"
         android:layout_marginEnd="25dp"
         android:src="@drawable/leisure"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,10 +143,10 @@
 
     <ImageView
         android:id="@+id/transportTypeButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="93dp"
         android:layout_marginEnd="40dp"
         android:src="@drawable/transport"
         app:layout_constraintEnd_toStartOf="@+id/supermarketTypeButton"
@@ -155,10 +155,10 @@
 
     <ImageView
         android:id="@+id/supermarketTypeButton"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="260dp"
         android:src="@drawable/supermarket"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -7,6 +7,23 @@
     android:background="@color/frag_home"
     android:id="@+id/homeLayout"
 >
+
+    <!--<TextView
+        android:id="@+id/initialAdvise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="36dp"
+        android:fontFamily="@font/josefin_sans_bold"
+        android:text=""
+        android:visibility="visible"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/addExpense"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
     <TextView
         android:id="@+id/addExpense"
         android:layout_width="wrap_content"

@@ -25,6 +25,7 @@ import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
@@ -181,14 +182,11 @@ public class SettingsFragmentTest {
 
     @Test
     public void deleteAllButtonTest(){
+        onView(withId(R.id.deleteButtonAll))
+                .perform(scrollTo());
 
         ViewInteraction button2 = onView(
                 allOf(withId(R.id.deleteButtonAll),
-                        childAtPosition(
-                                childAtPosition(
-                                        IsInstanceOf.<View>instanceOf(android.widget.GridLayout.class),
-                                        2),
-                                0),
                         isDisplayed()));
         button2.check(matches(isDisplayed()));
     }

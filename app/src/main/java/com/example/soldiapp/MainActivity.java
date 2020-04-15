@@ -204,6 +204,11 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
                 definitiveLanguage = "en"; //DEFAULT LANGUAGE if user doesn't have any of the others
         }
 
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putString("locale",definitiveLanguage);
+        prefEditor.putBoolean("changedLanguage",true);
+        prefEditor.commit();
+
         Locale locale = new Locale(definitiveLanguage);
         Locale.setDefault(locale);
         Configuration configuration = new Configuration();
@@ -212,4 +217,6 @@ public class MainActivity  extends AppCompatActivity implements NavigationView.O
                 getResources().getDisplayMetrics());
 
     }
+
+
 }

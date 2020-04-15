@@ -77,6 +77,7 @@
     <string name="confirmExpense">Conferma spese</string>
     <string name="or">o</string>
     <string name="backButton">Torna indietro</string>
+    <string name="firstTime">Qui puoi inserire la tua prima spesa</string>
 
 
 </resources>

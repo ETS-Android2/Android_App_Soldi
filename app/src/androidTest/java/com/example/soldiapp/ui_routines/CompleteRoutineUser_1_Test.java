@@ -220,7 +220,7 @@ public class CompleteRoutineUser_1_Test {
                                         0),
                                 0),
                         isDisplayed()));
-        textView2.check(matches(withText(activity.getString(R.string.currentMonth) +  " " + monthName)));
+        textView2.check(matches(withText(activity.getString(R.string.currentMonth) +  " " + capitalize(monthName))));
 
         //Scroll
         onView(withId(R.id.MonthlyExpenseBills))
@@ -356,5 +356,10 @@ public class CompleteRoutineUser_1_Test {
                         && view.equals(((ViewGroup) parent).getChildAt(position));
             }
         };
+    }
+
+
+    public static String capitalize(String str){
+        return str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase();
     }
 }

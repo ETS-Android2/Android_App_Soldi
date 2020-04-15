@@ -1,5 +1,6 @@
 package com.example.soldiapp.fragments.register_expense;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,9 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+
+import static android.content.Context.MODE_PRIVATE;
+import static com.example.soldiapp.fragments.SettingsFragment.APP_PREFERENCES;
 
 public class III_ConfirmExpenseFragment extends Fragment {
 
@@ -68,6 +72,8 @@ public class III_ConfirmExpenseFragment extends Fragment {
                 public void onClick(View v) {
                     if (v.getId() == R.id.confirmExpenseButton) {
 
+                        //confirmFirstExpenseDone();
+
                         saveExpense();
 
                        /* EditText input = (EditText) getActivity().findViewById(R.id.inputExpense);
@@ -88,6 +94,14 @@ public class III_ConfirmExpenseFragment extends Fragment {
             });
         }
 
+    }
+
+    private void confirmFirstExpenseDone() {
+        SharedPreferences settings = getActivity().getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putBoolean("firstExpense",false);
+        //((TextView)getActivity().findViewById(R.id.initialAdvise)).setText("");
+        prefEditor.commit();
     }
 
     private void showExpenseSummary(View view) {

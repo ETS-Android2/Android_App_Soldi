@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.soldiapp.MainActivity;
 import com.example.soldiapp.R;
 import com.example.soldiapp.auxiliar.MonthDate;
 import com.example.soldiapp.data_handling.ExpenseViewModel;
@@ -161,6 +163,8 @@ public class SettingsFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
+                                //allowFirstExpenseText();
+
                                 expenseViewModel.deleteAll();
 
                                 updateSpinner();
@@ -175,6 +179,14 @@ public class SettingsFragment extends Fragment {
 
             }
         });
+    }
+
+    private void allowFirstExpenseText() {
+        SharedPreferences settings = getActivity().getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putBoolean("firstExpense", true);
+        //((TextView)getActivity().findViewById(R.id.initialAdvise)).setText(getString(R.string.firstTime));
+        prefEditor.commit();
     }
 
     private void updateSpinner(){

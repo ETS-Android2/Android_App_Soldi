@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -47,6 +48,9 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        
+        //checkFirstAdvice();
+        
         final NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment);
 
         ((MainActivity) getActivity()).showBackButton(false);
@@ -66,6 +70,15 @@ public class HomeFragment extends Fragment {
         });
 
     }
+
+    /*private void checkFirstAdvice() {
+        SharedPreferences settings = getActivity().getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
+        boolean firstExpense =  settings.getBoolean("firstExpense",true);
+        if (firstExpense)
+            ((TextView)getView().findViewById(R.id.initialAdvise)).setText(getString(R.string.firstTime));
+        else
+            ((TextView)getView().findViewById(R.id.initialAdvise)).setText("");
+    }*/
 
     public boolean checkInputExpense(String input) {
         try {
