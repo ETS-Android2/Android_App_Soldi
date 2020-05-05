@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.soldiapp">
+    package="com.project.soldiapp">
 
     <application
         android:allowBackup="true"
@@ -10,8 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:screenOrientation="portrait"
+        android:resizeableActivity="false"
         >
-        <activity android:name=".MainActivity"
+        <activity android:name="com.project.soldiapp.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

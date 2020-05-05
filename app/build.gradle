@@ -5,10 +5,10 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        applicationId "com.example.soldiapp"
+        applicationId "com.project.soldiapp"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 1
+        versionCode 4
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -55,7 +55,7 @@ dependencies {
     android.defaultConfig.vectorDrawables.useSupportLibrary = true
 
     //Navigation
-    def nav_version = "2.2.0"
+    def nav_version = "2.3.0-alpha04"
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
