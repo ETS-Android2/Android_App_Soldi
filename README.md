@@ -13,4 +13,5 @@ At a testing level, frameworks like Robolectric and Espresso are also used.
 
 “Time is gold!”
 
-Play Store link: https://play.google.com/store/apps/details?id=com.project.soldiapp
+You can find it in here:
+https://play.google.com/store/apps/details?id=com.project.soldiapp
