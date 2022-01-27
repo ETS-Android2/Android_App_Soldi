@@ -12,3 +12,5 @@ To provide some of the functionalities, libraries and components like MPAndroid 
 At a testing level, frameworks like Robolectric and Espresso are also used.
 
 “Time is gold!”
+
+Play Store link: https://play.google.com/store/apps/details?id=com.project.soldiapp
